@@ -28,7 +28,13 @@ const getOrders = require('./back/order/getOrders');
 const readXlsxFile = require('read-excel-file/node');
 //mysql---------------------------------------------------------
 const mysql = require("mysql2");
-let databaseName = "newcalc";
+const {getNameService} = require("./back/serviceNames");
+const {update} = require("./back/files/updateFile");
+const createOrderAwait = require("./back/order/createOrderAwait");
+const {getUsers} = require("./back/users/users");
+const {getOrdersAwait} = require("./back/order/getOrdersAwait");
+
+const databaseName = "newcalc"
 const configSQLConnection = {
     host: "localhost",
     user: "root",
@@ -101,6 +107,8 @@ app.use((req, res, next) => {
     } else if (req.url === "/createOrder") {
         testHaveSession(req, res, next);
     } else if (req.url === "/getOrders") {
+        testHaveSession(req, res, next);
+    } else if (req.url === "/getUsers") {
         testHaveSession(req, res, next);
     }
     else {
@@ -227,19 +235,32 @@ app.post("/uploadFile", function (req, res) {
         let filenameToNorm = utf8.decode(filename.filename)
         console.log("Uploading file: " + filenameToNorm);
 
-        let data = [fieldname, "A4", "Йде обробка: " + filenameToNorm, `/files/data/processing.jpg`, req.sessionValue, true, 1, 0];
-        let sql = "INSERT INTO files(calc, format, name, path, session, img, count, orderid) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-        let connection = mysql.createConnection(configSQLConnection);
-        connection.query(sql, data, function (err, results) {
-            if (err) {
-                console.log(err);
+        try {
+            let fieldnameId = parseInt(fieldname)
+            if(isNaN(fieldnameId)){
+                let data = [fieldname, "A4", "Йде обробка: " + filenameToNorm, `/files/data/processing.jpg`, req.sessionValue, true, 1, 0];
+                let sql = "INSERT INTO files(calc, format, name, path, session, img, count, orderid) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+                let connection = mysql.createConnection(configSQLConnection);
+                connection.query(sql, data, function (err, results) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("ФАЙЛ " + results.insertId + " " + filenameToNorm + " добавлен");
+                        allAfterUpload.afterFileLoad(req, res, results, filenameToNorm, fstream, fieldname, file, configSQLConnection);
+                        log.addStatistics(req.userId, req.sessionId, "upLoad file", "success", results.insertId, configSQLConnection, filenameToNorm)
+                    }
+                });
+                connection.end();
             } else {
-                console.log("ФАЙЛ " + results.insertId + " " + filenameToNorm + " добавлен");
+                console.log(fieldnameId);
+                let results = {insertId: fieldnameId}
                 allAfterUpload.afterFileLoad(req, res, results, filenameToNorm, fstream, fieldname, file, configSQLConnection);
                 log.addStatistics(req.userId, req.sessionId, "upLoad file", "success", results.insertId, configSQLConnection, filenameToNorm)
+
             }
-        });
-        connection.end();
+        } catch (e) {
+            console.log(e);
+        }
     });
 });
 
@@ -315,9 +336,12 @@ app.post("/orders", function (req, res) {
             body = JSON.parse(body)
             console.log(`add order without file, calc type: ${body.data.calc}`);
 
+            let nameService = getNameService(body.data.calc)
+            console.log(nameService);
+
             let connection = mysql.createConnection(configSQLConnection);
-            let data = [body.data.calc, "A4", "БЕЗ ФАЙЛУ " + body.data.calc, `/files/data/notfile2.png`, req.sessionValue, true, 1, 1, 0];
-            let sql = "INSERT INTO files(calc, format, name, path, session, img, count, countInFile, orderid) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            let data = [body.data.calc, "A4", "" + nameService, `/files/data/notfile2.png`, req.sessionValue, true, 1, 1, 0, "0,00"];
+            let sql = "INSERT INTO files(calc, format, name, path, session, img, count, countInFile, orderid, price) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             connection.query(sql, data, function (err, results, fields) {
                 if (err) {
                     console.log(err);
@@ -332,10 +356,11 @@ app.post("/orders", function (req, res) {
                         calc: body.data.calc,
                         count: 1,
                         id: results.insertId,
-                        name: `БЕЗ ФАЙЛУ ${body.data.calc}`,
+                        name: `${nameService}`,
                         format: "A4",
                         countInFile: 1,
-                        url: ress
+                        url: ress,
+                        price: "0"
                     }
 
                     res.send(order)
@@ -592,7 +617,7 @@ app.post("/basket", function (req, res) {
                     } else {
                         res.send({
                             status: "error",
-                            error: "Без файлу неможна додати до кошику та зробити замовлення. Замовлення в розробці."
+                            error: "Без файлу неможна додати до кошику. Завантажте файл який бажаєте роздрукувати!"
                         })
                     }
                 }
@@ -656,8 +681,7 @@ app.post("/createOrder", function (req, res) {
         }).on('end', () => {
             body = Buffer.concat(body).toString();
             body = JSON.parse(body)
-            console.log(body);
-            createOrder.create(req, res, body, configSQLConnection)
+            createOrderAwait.createOrder(req, res, body, configSQLConnection)
         })
     } catch (err) {
         res.send({
@@ -681,7 +705,32 @@ app.post("/getOrders", function (req, res) {
                 body = Buffer.concat(body).toString();
                 body = JSON.parse(body)
                 console.log(body);
-                getOrders.getOrders(req, res, body, configSQLConnection)
+                getOrdersAwait(req, res, body, configSQLConnection)
+            })
+        } catch (err) {
+            res.send({
+                status: "error",
+                error: err
+            })
+        }
+    }
+})
+
+app.post("/getUsers", function (req, res) {
+    if (req.userId !== 1) {
+        res.sendStatus(401)
+    } else {
+        let body = [];
+        try {
+            req.on('error', (err) => {
+                console.error(err);
+            }).on('data', (chunk) => {
+                body.push(chunk);
+            }).on('end', () => {
+                body = Buffer.concat(body).toString();
+                body = JSON.parse(body)
+                console.log(body);
+                getUsers(req, res, body, configSQLConnection)
             })
         } catch (err) {
             res.send({

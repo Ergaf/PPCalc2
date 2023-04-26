@@ -37,21 +37,25 @@ const toastHeader = document.querySelector("#toastHeader");
 const formatInputs = document.querySelector("#formatInputs");
 const fileViewContainer = document.querySelector("#fileViewContainer");
 const fileLoadModalBody = document.querySelector("#fileLoadModalBody");
+const formatContainer = document.querySelector("#formatContainer");
+const drukContainer = document.querySelector("#drukContainer");
 
 window.addEventListener('popstate', function(event) {
     event.preventDefault();
     internalBackNavigation(event);
 });
 
-history.pushState({}, '');
+
 function internalBackNavigation(event) {
     digitalPrintingContainer.classList.add("d-none");
     mainDisplay.classList.remove("d-none");
     toHomeButton.classList.add("d-none");
+    photoCalc.addClass('d-none');
     if (allFiles.length > 0) {
         toFilesButton.classList.remove("d-none");
     }
     history.pushState({}, '');
+    console.log(history);
 }
 
 //lines in dop opt
@@ -195,6 +199,7 @@ function nonUploadFunc(){
             file1.format = e.data.format
             file1.countInFile = e.data.countInFile
             file1.calc = e.data.calc
+            file1.price = e.data.price
             file1.url = e.data.url
             allFiles.push(file1)
             file1.createFileContainer()
@@ -217,7 +222,7 @@ upload.addEventListener("click", function () {
     }
 })
 
-function uploadFile(fileInput) {
+function uploadFile(fileInput, isExist, id) {
     download.classList.remove("d-none");
     mainDisplay.classList.add("d-none");
     digitalPrintingContainer.classList.add("d-none");
@@ -239,6 +244,11 @@ function uploadFile(fileInput) {
             },
         };
         let fd = new FormData();
+        let fieldName = {
+            calcType: calcType,
+            id: id,
+            isExists: isExist
+        }
         fd.append(calcType, fileInput.files[0], fileInput.files[0].name)
         axios.post("/uploadFile", fd, config)
             .then(e => {
@@ -265,6 +275,7 @@ function uploadFile(fileInput) {
                 toHomeButton.classList.remove("d-none");
                 toFilesButton.classList.add("d-none");
                 $("#exampleModal").modal("hide")
+                $("#exampleModal2").modal("hide")
             })
     }
 }
@@ -425,6 +436,7 @@ fetch('/getprices')
                     })
 
                     download.classList.add("d-none")
+                    history.pushState({}, '');
 
                     if (allFiles.length > 0) {
                         mainDisplay.classList.add("d-none")

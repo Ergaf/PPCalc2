@@ -14,14 +14,14 @@ sessions.addEventListener("click", function (){
     statisticsContainer.classList.add("d-none")
     tableBody.classList.remove("d-none")
     nameService.innerText = "Активні сессії"
-    tableTitle.innerHTML = `<th scope="col">increment</th>
-                            <th scope="col">sesson ID</th>
+    tableTitle.innerHTML = `<th scope="col">ID</th>
+                            <th scope="col">sessonValue</th>
                             <th scope="col">userAgent</th>
-                            <th scope="col">ip</th>
+                            <th scope="col">IP</th>
                             <th scope="col">time</th>
-                            <th scope="col">user ID</th>
+                            <th scope="col">userID</th>
                             <th scope="col">del</th>`
-    getData()
+    getData("Активні сессії")
 })
 function createTime(timeStr){
     let thisTime = new Date(parseInt(timeStr));
@@ -53,14 +53,14 @@ function renderSessionsItem(e){
     e.data.data.forEach(o => {
         let tr = document.createElement("tr");
         tr.classList.add("trColumn");
-        let innerHTML = `<td><div class="btn">${o.id}</div></td>
-                            <td><div class="btn">${o.session}</div></td>
-                            <td><div class="btn">${o.userAgent}</div></td>
-                            <td><div class="btn">${o.ip}</div></td>
-                            <td><div class="btn">${createTime(o.time)}</div></td>
-                            <td><div class="btn">${o.userid}</div></td>
+        let innerHTML = `<td><div class="btn btn-sm">${o.id}</div></td>
+                            <td><div class="btn btn-sm">${o.session}</div></td>
+                            <td><div class="btn btn-sm">${o.userAgent}</div></td>
+                            <td><div class="btn btn-sm">${o.ip}</div></td>
+                            <td><div class="btn btn-sm">${createTime(o.time)}</div></td>
+                            <td><div class="btn btn-sm">${o.userid}</div></td>
                             <td>
-                                <button class="btn btn-danger" itemId="${o.id}" onclick=del(event.target)>close</button>
+                                <button class="btn btn-sm btn-danger" itemId="${o.id}" onclick=del(event.target)>close</button>
                             </td>         
                             `;
         tr.innerHTML = innerHTML;

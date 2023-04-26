@@ -40,11 +40,6 @@ input {
     width: 10vw;
     z-index: 5;
 }
-.materialButtons {
-    width: 14vw;
-    border: #000000 solid 0.2vw;
-    margin: 0.2vw;
-}
 .destinyButtons {
     /*width: 42vw;*/
     font-size: 1vw;
@@ -68,6 +63,9 @@ body {
     padding: 1vw;
     /*padding-left: 8vw;*/
     font-weight: 600;
+}
+.promoCodeInputsContainer {
+    margin-top: 4.1vw;
 }
 .white{
     background: white;
@@ -236,7 +234,6 @@ body {
         width: 10vw;
     }
 }
-<<<<<<< HEAD
 .orientButton {
     border: none;
 }
@@ -249,8 +246,6 @@ body {
     margin: 0.2vw;
     font-family: 'GothamBook', sans-serif;
 }
-=======
->>>>>>> parent of da44e12 (f)
 .containerForImgInServer {
     position: absolute;
     display: flex;
@@ -475,36 +470,31 @@ body {
     border: #000000 solid 0.1vw;
 }
 .formatC {
+    border: #000000 solid 0.1vw;
     margin: 0.1vw;
     padding-left: 0.5vw;
     padding-right: 0.5vw;
-    border: #000000 solid 0.1vw;
 }
 .moreOptions {
     background: #E9E6DA;
 }
-<<<<<<< HEAD
 .addMoreFiles {
     width: 2.3vw;
     margin-top: 0;
     font-size: 1.4vw;
     padding: 0;
-=======
-.inputFormat {
-    border: none;
-    border-bottom: black solid;
-    border-radius: 0;
->>>>>>> parent of da44e12 (f)
 }
 .inputCount {
+    font-family: 'GothamBook', sans-serif;
     border: none;
     border-bottom: black solid;
     border-radius: 0;
-    font-size: 3vw;
+    font-size: 4vw;
     text-align: left;
-    width: 15vw;
+    width: 14vw;
 }
 .inputPrice {
+    font-family: 'GothamBook', sans-serif;
     border: none;
     /*border-bottom: black solid;*/
     border-radius: 0;
@@ -527,23 +517,38 @@ body {
     width: 50vw;
 }
 .dopOptionButton {
+    margin-top: 0.3vw;
     width: 50vw;
+    height: 2.7vw;
     text-align: left;
     border: black solid 0.1vw;
+    border-radius: 5vw;
+    background: #E9E6DA;
 }
 .promoCodeContainer {
-    margin-left: 8vw;
+    margin-left: 3vw;
 }
 .promoCodeInput {
     border: none;
     border-bottom: black solid;
     border-radius: 0;
-    font-size: 3vw;
+    font-size: 1vw;
     text-align: left;
-    width: 15vw;
+    width: 14vw;
 }
 .priceContainer {
-    margin-left: 20vw;
+    margin-left: 5vw;
+}
+.promoCodeButton {
+    margin-left: 1vw;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    border: black solid 0.1vw;
+}
+.slider-item {
+    border: black solid 0.1vw;
+    margin-left: 0.5vw;
+    overflow: hidden;
 }
 @media (max-width: 1000px){
     * {
@@ -567,6 +572,7 @@ body {
     }
     .slider-item {
         height: 2rem;
+        border: black solid 0.1vw;
     }
     .FilesContainerRelative {
         height: 2rem;

@@ -10,6 +10,7 @@ digitalPrint.addEventListener("click", event => {
     calcType = "digital"
     upload.classList.remove("d-none")
     fileLoadModalBody.classList.remove("d-none")
+    history.pushState({}, '');
     nonUploadFunc()
 })
 widescreenPrint.addEventListener("click", event => {
@@ -18,6 +19,20 @@ widescreenPrint.addEventListener("click", event => {
     calcType = "wide"
     upload.classList.remove("d-none")
     fileLoadModalBody.classList.remove("d-none")
+    history.pushState({}, '');
+    nonUploadFunc()
+})
+
+photoPrint.on('click', function() {
+    // photoCalc.removeClass('d-none');
+    // mainDisplay.classList.add('d-none');
+    activateModal()
+    fileClassCalcToModal.innerHTML = "Друк на чашках"
+    calcType = "photo"
+    upload.classList.remove("d-none")
+    fileLoadModalBody.classList.remove("d-none")
+    history.pushState({}, '');
+    // $("#exampleModal").modal("show")
     nonUploadFunc()
 })
 
@@ -27,6 +42,7 @@ cupPrint.addEventListener("click", function (){
     calcType = "cup"
     upload.classList.remove("d-none")
     fileLoadModalBody.classList.remove("d-none")
+    history.pushState({}, '');
     // $("#exampleModal").modal("show")
     nonUploadFunc()
 })
@@ -37,6 +53,7 @@ afterPrint.addEventListener("click", function (){
     calcType = "afterPrint"
     upload.classList.add("d-none")
     fileLoadModalBody.classList.add("d-none")
+    history.pushState({}, '');
     // $("#exampleModal").modal("show")
     nonUploadFunc()
 })

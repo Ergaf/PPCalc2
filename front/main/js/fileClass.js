@@ -324,6 +324,12 @@ class file {
 
     renderSettings() {
         // console.log(thisFile);
+        if(this.canToOrder){
+            addFileButton.classList.add("d-none")
+        } else {
+            addFileButton.classList.remove("d-none")
+        }
+
         this.allPaperCount = this.countInFile * thisFile._count
         if (this.format !== "custom") {
             this.getSize()
@@ -361,6 +367,9 @@ class file {
         widthLaminationL.classList.add("d-none")
         //lines in dop options-------------------------------------------
 
+        formatContainer.classList.add("d-none");
+        drukContainer.classList.add("d-none");
+
         if (thisFile.calc === "digital") {
             let formats = `
                     <div class="btn format" toFile="A7">A7</div>
@@ -371,6 +380,9 @@ class file {
                     <div class="btn formatC" toFile="custom">Свій розмір</div>
                         `;
             formatButtons.innerHTML = formats;
+
+            formatContainer.classList.remove("d-none");
+            drukContainer.classList.remove("d-none");
             colorButtons.classList.remove("d-none")
             sidesButtons.classList.remove("d-none")
             paperButtons.classList.remove("d-none")
@@ -390,7 +402,7 @@ class file {
                     <div class="btn formatC" toFile="custom">Свій розмір</div>
                         `;
             formatButtons.innerHTML = formats;
-
+            formatContainer.classList.remove("d-none");
             colorButtons.classList.add("d-none")
             sidesButtons.classList.add("d-none")
             paperButtons.classList.add("d-none")
@@ -428,7 +440,7 @@ class file {
                         `;
             formatButtons.innerHTML = formats;
             // formatButtons.innerHTML = "";
-
+            formatContainer.classList.remove("d-none");
 
             toUseButtons.classList.add("d-none");
             accordionOptions.classList.add("d-none");
