@@ -1,0 +1,10 @@
+.bindingButton {
+    width: 18vw;
+    border-radius: 1.5vw;
+    border: black 0.1vw solid;
+}
+.bindingButtonSvg {
+    width: 6vw;
+    margin-left: 3vw;
+    /*width: 10vw;*/
+}

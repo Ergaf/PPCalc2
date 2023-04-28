@@ -12,6 +12,7 @@
     <link type="text/css" href="css/gif.css" rel="stylesheet"/>
     <link type="text/css" href="css/fileViewer.css" rel="stylesheet"/>
     <link type="text/css" href="css/inputsButtons.css" rel="stylesheet"/>
+    <link type="text/css" href="css/dopOptions.css" rel="stylesheet"/>
     <link
             type="text/css"
             href="css/tui/tui-color-picker.css"
@@ -378,7 +379,7 @@
                                      data-bs-parent="#accordionOptions">
                                     <div class="accordion-body">
 
-                                        <div class="accordion-item moreOptions">
+                                        <div class="accordion-item moreOptions" id="laminationButtonsAccordion">
                                             <div class="d-flex justify-content-center accordion-header" id="laminationButtonsHeadThree">
                                                 <button class="accordion-button btn dopOptionButton collapsed" type="button"
                                                         data-bs-toggle="collapse"
@@ -397,7 +398,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="accordion-item moreOptions">
+                                        <div class="accordion-item moreOptions d-none" id="bindingButtonsAccordion">
                                             <div class="d-flex justify-content-center accordion-header" id="bindingButtonsHeadThree">
                                                 <button class="accordion-button btn dopOptionButton collapsed" type="button"
                                                         data-bs-toggle="collapse"
@@ -410,28 +411,41 @@
                                                  aria-labelledby="bindingButtonsHeadThree"
                                                  data-bs-parent="">
                                                 <div class="accordion-body">
-                                                    <div class="row row-cols-2 align-items-center" id="bindingButtons"></div>
-                                                    <div class="horizontalLine" id="bindingButtonsL"></div>
+<!--                                                    <div class="invisible row row-cols-2 align-items-center" id="bindingButtons"></div>-->
+                                                    <div class="invisible horizontalLine" id="bindingButtonsL"></div>
 
-                                                    <div class="row row-cols-2 align-items-center" id="bindingSelectButtons"></div>
-                                                    <div class="horizontalLine" id="bindingSelectButtonsL"></div>
+                                                    <div class="invisible row row-cols-2 align-items-center" id="bindingSelectButtons"></div>
+                                                    <div class="invisible horizontalLine" id="bindingSelectButtonsL"></div>
 
-                                                    <div class="row row-cols-2 align-items-center" id="cowerButtons"></div>
-                                                    <div class="horizontalLine" id="cowerButtonsL"></div>
+                                                    <div class="invisible row row-cols-2 align-items-center" id="cowerButtons"></div>
+                                                    <div class="invisible horizontalLine" id="cowerButtonsL"></div>
 
-                                                    <div class="row row-cols-2 align-items-center" id="frontLiningButtons"></div>
-                                                    <div class="horizontalLine" id="frontLiningButtonsL"></div>
+                                                    <div class="invisible row row-cols-2 align-items-center" id="frontLiningButtons"></div>
+                                                    <div class="invisible horizontalLine" id="frontLiningButtonsL"></div>
 
-                                                    <div class="d-flex justify-content-center" style="font-weight: 600" id="backLiningText"></div>
-                                                    <div class="horizontalLine" id="backLiningTextL"></div>
+                                                    <div class="invisible d-flex justify-content-center" style="font-weight: 600" id="backLiningText"></div>
+                                                    <div class="invisible horizontalLine" id="backLiningTextL"></div>
 
-                                                    <div class="row row-cols-2 align-items-center" id="backLiningButtons"></div>
-                                                    <div class="horizontalLine" id="backLiningButtonsL"></div>
+                                                    <div class="invisible row row-cols-2 align-items-center" id="backLiningButtons"></div>
+                                                    <div class="invisible horizontalLine" id="backLiningButtonsL"></div>
+
+                                                    <div id="bindingButtons" class="d-flex justify-content-center">
+                                                        <div class="bindingButton">
+                                                            <img class="bindingButtonSvg" src="img/dopoptions/skoba.svg" alt="">
+                                                        </div>
+                                                        <div class="bindingButton">
+                                                            <img class="bindingButtonSvg" src="img/dopoptions/metall.svg" alt="">
+                                                        </div>
+                                                        <div class="bindingButton">
+                                                            <img class="bindingButtonSvg" src="img/dopoptions/plastic.svg" alt="">
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="accordion-item moreOptions">
+                                        <div class="accordion-item moreOptions" id="bigButtonsAccordion">
                                             <div class="d-flex justify-content-center accordion-header" id="bigButtonsHeadThree">
                                                 <button class="accordion-button btn dopOptionButton collapsed" type="button"
                                                         data-bs-toggle="collapse"
@@ -450,7 +464,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="accordion-item moreOptions">
+                                        <div class="accordion-item moreOptions" id="holesButtonsAccordion">
                                             <div class="d-flex justify-content-center accordion-header" id="holesButtonsHeadThree">
                                                 <button class="accordion-button btn dopOptionButton collapsed" type="button"
                                                         data-bs-toggle="collapse"
@@ -469,7 +483,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="accordion-item moreOptions">
+                                        <div class="accordion-item moreOptions" id="roundCornerButtonsAccordion">
                                             <div class="d-flex justify-content-center accordion-header" id="roundCornerButtonsHeadThree">
                                                 <button class="accordion-button btn dopOptionButton collapsed" type="button"
                                                         data-bs-toggle="collapse"
@@ -488,11 +502,28 @@
                                             </div>
                                         </div>
 
+                                        <div class="accordion-item moreOptions" id="stickerCuttingAccordion">
+                                            <div class="d-flex justify-content-center accordion-header" id="stickerCuttingHeadThree">
+                                                <button class="accordion-button btn dopOptionButton collapsed" type="button"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target="#stickerCuttingCollapseThree" aria-expanded="false"
+                                                        aria-controls="">
+                                                    Фігурна порізка
+                                                </button>
+                                            </div>
+                                            <div id="stickerCuttingCollapseThree" class="accordion-collapse collapse"
+                                                 aria-labelledby="stickerCuttingHeadThree"
+                                                 data-bs-parent="">
+                                                <div class="accordion-body">
+                                                    <div class="row row-cols-2 align-items-center" id="stickerCutting"></div>
+                                                    <div class="horizontalLine" id="stickerCuttingL"></div>
+                                                    <div class="row row-cols-2 align-items-center" id="stickerCuttingThis"></div>
+                                                    <div class="horizontalLine" id="stickerCuttingThisL"></div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        <div class="row row-cols-2 align-items-center" id="stickerCutting"></div>
-                                        <div class="horizontalLine" id="stickerCuttingL"></div>
-                                        <div class="row row-cols-2 align-items-center" id="stickerCuttingThis"></div>
-                                        <div class="horizontalLine" id="stickerCuttingThisL"></div>
+
                                         <div class="row row-cols-2 align-items-center" id="luvers"></div>
                                         <div class="horizontalLine" id="luversL"></div>
                                         <div class="row row-cols-2 align-items-center" id="bannerVarit"></div>
@@ -786,7 +817,9 @@
     </div>
 </div>
 
-
+<script src="js/bootstrap.bundle.js" charset="utf-8"></script>
+<script src="js/jquery-3.6.1.min.js" charset="utf-8"></script>
+<script src="js/index.js" charset="utf-8"></script>
 <script src="js/photocalc/userImageUnitClass.js" charset="utf-8"></script>
 <script src="js/promo.js" charset="utf-8"></script>
 
@@ -798,7 +831,6 @@
 <script src="js/renders/renderWideCalc.js" charset="utf-8"></script>
 <script src="js/renders/renderPhotoCalc.js" charset="utf-8"></script>
 <script src="js/renders/renderOptionsInOneOfOptionContainer.js" charset="utf-8"></script>
-<script src="js/jquery-3.6.1.min.js" charset="utf-8"></script>
 <script src="js/pdf.js" charset="utf-8"></script>
 <!--<script src="js/pdf.js.map" charset="utf-8"></script>-->
 <script src="js/pdfRender.js" charset="utf-8"></script>
@@ -820,7 +852,6 @@
 <script src="js/tuiimage/indexTui.js" charset="utf-8"></script>
 
 
-<script src="js/bootstrap.bundle.js" charset="utf-8"></script>
 <script src="js/utf8.js" charset="utf-8"></script>
 
 <!--<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" charset="utf-8"></script>-->

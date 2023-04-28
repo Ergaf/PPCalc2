@@ -68,7 +68,7 @@ function renderDigitalCalc(priceCalc){
     laminationButtons.classList.remove("d-none")
     bindingSelectButtons.innerHTML = ""
     bindingSelectButtons.classList.remove("d-none")
-    bindingButtons.innerHTML = ""
+    // bindingButtons.innerHTML = ""
     bindingButtons.classList.remove("d-none")
     cowerButtons.innerHTML = ""
     cowerButtons.classList.remove("d-none")
@@ -90,6 +90,13 @@ function renderDigitalCalc(priceCalc){
     renderOptions(thisFile.paper, "destiny", destinyButtons, "destinyButtons")
 
     if(thisFile.paper === "Папір/Картон"){
+        stickerCuttingAccordion.classList.add("d-none")
+        laminationButtonsAccordion.classList.remove("d-none")
+        bindingButtonsAccordion.classList.remove("d-none")
+        holesButtonsAccordion.classList.remove("d-none")
+        roundCornerButtonsAccordion.classList.remove("d-none")
+        bigButtonsAccordion.classList.remove("d-none")
+
         accordionOptions.classList.remove("d-none")
         thisFile.stickerCutting = undefined
         thisFile.stickerCuttingThis = undefined
@@ -115,37 +122,37 @@ function renderDigitalCalc(priceCalc){
         renderOptions("ламінуванння", "lamination", laminationButtons)
         laminationButtonsL.classList.remove("d-none")
 
-        if(thisFile.binding === undefined || thisFile.binding === null){
-            thisFile.binding = "без брошурування"
-        }
-        if(getBindingFromPaperCount("брошурування") !== undefined){
-            getBindingFromPaperCount("брошурування").forEach(e => {
-                let elem = document.createElement("div")
-                elem.innerText = e[0]
-                elem.classList.add("btn")
-                if(e[0] === "на пластикову" || e[0] === "на металеву" || e[0] === "прошивка дипломних робіт"){
-                    elem.addEventListener("click", function () {
-                        thisFile.bindingSelect = undefined
-                        thisFile.cower = undefined
-                        thisFile.binding = elem.innerText
-                        thisFile.renderSettings()
-                    })
-                }
-                else {
-                    elem.addEventListener("click", function () {
-                        thisFile.bindingSelect = undefined
-                        thisFile.cower = undefined
-                        thisFile.binding = elem.innerText
-                        thisFile.renderSettings()
-                    })
-                }
-                if(e[0] === thisFile.binding){
-                    elem.classList.add("btnm-act")
-                }
-                bindingButtons.appendChild(elem)
-                bindingButtonsL.classList.remove("d-none")
-            })
-        }
+        // if(thisFile.binding === undefined || thisFile.binding === null){
+        //     thisFile.binding = "без брошурування"
+        // }
+        // if(getBindingFromPaperCount("брошурування") !== undefined){
+        //     getBindingFromPaperCount("брошурування").forEach(e => {
+        //         let elem = document.createElement("div")
+        //         elem.innerText = e[0]
+        //         elem.classList.add("btn")
+        //         if(e[0] === "на пластикову" || e[0] === "на металеву" || e[0] === "прошивка дипломних робіт"){
+        //             elem.addEventListener("click", function () {
+        //                 thisFile.bindingSelect = undefined
+        //                 thisFile.cower = undefined
+        //                 thisFile.binding = elem.innerText
+        //                 thisFile.renderSettings()
+        //             })
+        //         }
+        //         else {
+        //             elem.addEventListener("click", function () {
+        //                 thisFile.bindingSelect = undefined
+        //                 thisFile.cower = undefined
+        //                 thisFile.binding = elem.innerText
+        //                 thisFile.renderSettings()
+        //             })
+        //         }
+        //         if(e[0] === thisFile.binding){
+        //             elem.classList.add("btnm-act")
+        //         }
+        //         bindingButtons.appendChild(elem)
+        //         bindingButtonsL.classList.remove("d-none")
+        //     })
+        // }
 
         renderOptions(thisFile.binding, "bindingSelect", bindingSelectButtons)
         bindingSelectButtonsL.classList.remove("d-none")
@@ -179,7 +186,12 @@ function renderDigitalCalc(priceCalc){
         }
     }
     else if(thisFile.paper === "Самоклеючі"){
-        accordionOptions.classList.remove("d-none")
+        stickerCuttingAccordion.classList.remove("d-none")
+        laminationButtonsAccordion.classList.add("d-none")
+        bindingButtonsAccordion.classList.add("d-none")
+        holesButtonsAccordion.classList.add("d-none")
+        roundCornerButtonsAccordion.classList.add("d-none")
+        bigButtonsAccordion.classList.add("d-none")
         thisFile.lamination = undefined
         thisFile.bindingSelect = undefined
         thisFile.binding = undefined

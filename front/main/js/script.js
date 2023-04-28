@@ -1,45 +1,3 @@
-const upload = document.querySelector("#upload")
-const download = document.querySelector("#download")
-const modalCloseButton = document.querySelector("#modalCloseButton")
-const nonUpload = document.querySelector("#nonUpload")
-const ifPrintCountLists = document.querySelector("#ifPrintCountLists")
-const allCountElement = document.querySelector("#allCountElement")
-const addFileButton = document.querySelector("#addFileButton");
-const storinki = document.querySelector("#storinki");
-const list = document.querySelector(".list");
-const orient = document.querySelector("#orient");
-const stickerCutting = document.querySelector("#stickerCutting");
-const stickerCuttingThis = document.querySelector("#stickerCuttingThis");
-const arkushi = document.querySelector("#arkushi");
-const primirnyk = document.querySelector("#primirnyk");
-const containerForImgInServer = document.querySelector("#containerForImgInServer");
-const containerForPdfInServer = document.querySelector("#containerForPdfInServer");
-const settingsContainer = document.querySelector("#settingsContainer");
-const mainDisplay = document.querySelector("#mainDisplay");
-const digitalPrintingContainer = document.querySelector("#digitalPrintingContainer");
-const selectButtonCalc = document.querySelector("#selectButtonCalc");
-const fileClassCalcToModal = document.querySelector("#fileClassCalcToModal");
-const toUseButtons = document.querySelector("#toUseButtons");
-const destinyThisButtons = document.querySelector("#destinyThisButtons");
-const toHomeButton = document.querySelector("#toHomeButton");
-const toFilesButton = document.querySelector("#toFilesButton");
-const photoRedactor = document.querySelector("#photoRedactor");
-const luvers = document.querySelector("#luvers");
-const bannerVarit = document.querySelector("#bannerVarit");
-const floorLamination = document.querySelector("#floorLamination");
-const widthLamination = document.querySelector("#widthLamination");
-const rotateLeft = document.querySelector("#rotateLeft");
-const rotateRight = document.querySelector("#rotateRight");
-// const openEditor = document.querySelector("#openEditor");
-const rotateNormal = document.querySelector("#rotateNormal");
-const toastBody = document.querySelector("#toastBody");
-const toastHeader = document.querySelector("#toastHeader");
-const formatInputs = document.querySelector("#formatInputs");
-const fileViewContainer = document.querySelector("#fileViewContainer");
-const fileLoadModalBody = document.querySelector("#fileLoadModalBody");
-const formatContainer = document.querySelector("#formatContainer");
-const drukContainer = document.querySelector("#drukContainer");
-
 window.addEventListener('popstate', function(event) {
     event.preventDefault();
     internalBackNavigation(event);
@@ -57,26 +15,6 @@ function internalBackNavigation(event) {
     history.pushState({}, '');
     console.log(history);
 }
-
-//lines in dop opt
-const laminationButtonsL = document.querySelector("#laminationButtonsL");
-const bindingButtonsL = document.querySelector("#bindingButtonsL");
-const bindingSelectButtonsL = document.querySelector("#bindingSelectButtonsL");
-const cowerButtonsL = document.querySelector("#cowerButtonsL");
-const frontLiningButtonsL = document.querySelector("#frontLiningButtonsL");
-const backLiningTextL = document.querySelector("#backLiningTextL");
-const backLiningButtonsL = document.querySelector("#backLiningButtonsL");
-const bigButtonsL = document.querySelector("#bigButtonsL");
-const holesButtonsL = document.querySelector("#holesButtonsL");
-const roundCornerButtonsL = document.querySelector("#roundCornerButtonsL");
-const stickerCuttingThisL = document.querySelector("#stickerCuttingThisL");
-const stickerCuttingL = document.querySelector("#stickerCuttingL");
-const luversL = document.querySelector("#luversL");
-const bannerVaritL = document.querySelector("#bannerVaritL");
-const floorLaminationL = document.querySelector("#floorLaminationL");
-const widthLaminationL = document.querySelector("#widthLaminationL");
-//lines in dop opt
-
 
 rotateLeft.addEventListener("click", function () {
     thisFile.rotateImgFromNav = thisFile.rotateImgFromNav - 90
@@ -121,9 +59,6 @@ function activateModal() {
 
 let calcType = ""
 
-const digitalCalcSelect = document.querySelector("#digitalCalcSelect");
-const widelCalcSelect = document.querySelector("#widelCalcSelect");
-const photoCalcSelect = document.querySelector("#photoCalcSelect");
 digitalCalcSelect.addEventListener("click", event => {
     thisFile.calc = digitalCalcSelect.getAttribute("toFile")
     thisFile.renderSettings()
@@ -282,24 +217,6 @@ function uploadFile(fileInput, isExist, id) {
     }
 }
 
-let price = document.querySelector(".price")
-const formatButtons = document.querySelector("#formatButtons");
-let sidesButtons = document.querySelector("#sidesButtons");
-let colorButtons = document.querySelector("#colorButtons");
-let paperButtons = document.querySelector("#paperButtons");
-let destinyButtons = document.querySelector("#destinyButtons")
-let laminationButtons = document.querySelector("#laminationButtons")
-let cowerButtons = document.querySelector("#cowerButtons")
-let frontLiningButtons = document.querySelector("#frontLiningButtons")
-let backLiningButtons = document.querySelector("#backLiningButtons")
-let backLiningText = document.querySelector("#backLiningText")
-let bindingButtons = document.querySelector("#bindingButtons")
-let bindingSelectButtons = document.querySelector("#bindingSelectButtons")
-let bigButtons = document.querySelector("#bigButtons")
-let holesButtons = document.querySelector("#holesButtons")
-let roundCornerButtons = document.querySelector("#roundCornerButtons")
-let text = document.querySelector("#text")
-let accordionOptions = document.querySelector("#accordionOptions")
 Array.prototype.slice.call(sidesButtons.children).forEach(e => {
     e.addEventListener("click", function () {
         let data = {
@@ -343,9 +260,6 @@ Array.prototype.slice.call(paperButtons.children).forEach(e => {
     })
 })
 
-let countInt = document.querySelector("#countInt")
-let sizeX = document.querySelector("#sizeX")
-let sizeY = document.querySelector("#sizeY")
 let prices;
 // fetch('https://script.googleusercontent.com/macros/echo?user_content_key=wLSQSatR6bZv9i8U5VtiOsa7GMSDGnnZijrnGFZE1_jwd1QJkdBz8Sl8ITa_TvVjVpf_ByOh6IcFuOZ7evsUSo_9NYtdFJYTm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDbwAl7CMxVAiYx-XcQGm2-pK98VFRlg2L1Bgi9-N5lGP8ipd0KGqDVV0UksueULwVpami56uyJ4IxkRYgJm5B_wls8-MAHEtdz9Jw9Md8uu&lib=MKqsPpMpIdvM_NE9JC918gzq7P1CHZY8E')
 fetch('/getprices')
@@ -457,8 +371,6 @@ fetch('/getprices')
                 }
             })
     })
-let toast = new bootstrap.Toast($("#liveToast"))
-let optContainer = document.querySelector(".optionsContainer")
 
 countInt.addEventListener("change", function () {
     if (countInt.value < 1) {
@@ -666,11 +578,6 @@ sizeY.addEventListener("wheel", function () {
         }
     })
 })
-
-let imgInp = document.querySelector("#imgInp")
-let iframe = document.querySelector("#iframe")
-let form = document.querySelector("#formmm")
-let progressbar = document.querySelector("#progressbar")
 
 async function sendData(url, method, data) {
     // Default options are marked with *
