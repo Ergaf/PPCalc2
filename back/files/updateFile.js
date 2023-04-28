@@ -63,6 +63,7 @@ function ifConditions(req, res, body, results1, results2, configSQLConnection, p
             thisFile.realCount = realCount
             let paperPrice = getPriceFromCountPaper(results2[0].destiny, prices)
             let laminationPrice = getPriceFromCount(results2[0].lamination, "Ламінування", results2[0].format, prices)
+            // console.log(laminationPrice);
             if(!isNaN(paperPrice) && paperPrice !== undefined){
                 priceCalc = paperPrice*realCount
             }
@@ -85,9 +86,9 @@ function ifConditions(req, res, body, results1, results2, configSQLConnection, p
                 priceCalc = priceCalc + lamPrice;
             }
         }
-        let bigPrice = getPriceFromCount(results2[0].big, "згиби", results2[0].format, prices)*thisFile.allPaperCount
-        let holesPrice = getPriceFromCount(results2[0].holes, "отвір", results2[0].format, prices)*thisFile.allPaperCount
-        let roundCornerPrice = getPriceFromCount(results2[0].roundCorner, "кути", results2[0].format, prices)*thisFile.allPaperCount
+        let bigPrice = getPriceFromCount(results2[0].big, "згиби", "", prices)*thisFile.allPaperCount
+        let holesPrice = getPriceFromCount(results2[0].holes, "отвір", "", prices)*thisFile.allPaperCount
+        let roundCornerPrice = getPriceFromCount(results2[0].roundCorner, "кути", "", prices)*thisFile.allPaperCount
         let cowerPrice = getPriceFromCount(results2[0].cower, "обкладинка", results2[0].format, prices)*thisFile.allPaperCount
 
 
@@ -381,6 +382,7 @@ function getPriceFromCount(name, nameService, format, prices) {
 
 function getProductInVariantsFromNameNotPaper(name, nameService, format, prices) {
     let price = getVariantsFromName(nameService, format, prices)
+    // console.log(price);
     let pricePaper = undefined
     if(price !== undefined){
         for (let i = 0; i < price.length; i++){
@@ -399,11 +401,11 @@ function getVariantsFromName(nameService, format, prices) {
         for (let i = 0; i < prices.length; i++){
             if(prices[i].name === `${nameService} А4`) {
                 price = prices[i].variants
+                // console.log(price);
                 break;
             }
         }
-    }
-    if(
+    } else if(
         format === "A3" ||
         format === "A5" ||
         format === "A6" ||
@@ -440,7 +442,7 @@ function getBindingFromNameAndFormat(nameService, prices) {
             }
         }
     }
-    if(
+    else if(
         thisFile.format === "A3"
     ){
         for (let i = 0; i < prices.length; i++){

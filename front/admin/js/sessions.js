@@ -53,6 +53,7 @@ function renderSessionsItem(e){
     e.data.data.forEach(o => {
         let tr = document.createElement("tr");
         tr.classList.add("trColumn");
+        tr.classList.add("color");
         let innerHTML = `<td><div class="btn btn-sm">${o.id}</div></td>
                             <td><div class="btn btn-sm">${o.session}</div></td>
                             <td><div class="btn btn-sm">${o.userAgent}</div></td>

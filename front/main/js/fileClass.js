@@ -423,7 +423,7 @@ class file {
             formatInputs.classList.remove("d-none");
 
             toUseButtons.classList.remove("d-none");
-            accordionOptions.classList.remove("d-none");
+            accordionOptions.classList.add("d-none");
             fileViewContainer.classList.remove("d-none");
             ifPrintCountLists.classList.remove("d-none");
             countInFile.innerText = this.countInFile

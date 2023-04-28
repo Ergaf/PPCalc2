@@ -340,8 +340,8 @@ app.post("/orders", function (req, res) {
             console.log(nameService);
 
             let connection = mysql.createConnection(configSQLConnection);
-            let data = [body.data.calc, "A4", "" + nameService, `/files/data/notfile2.png`, req.sessionValue, true, 1, 1, 0, "0,00"];
-            let sql = "INSERT INTO files(calc, format, name, path, session, img, count, countInFile, orderid, price) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            let data = [body.data.calc, "A4", "" + nameService, `/files/data/notfile2.png`, req.sessionValue, true, 1, 1, 0, "0,00", "one", "bw"];
+            let sql = "INSERT INTO files(calc, format, name, path, session, img, count, countInFile, orderid, price, sides, color) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             connection.query(sql, data, function (err, results, fields) {
                 if (err) {
                     console.log(err);
@@ -360,7 +360,10 @@ app.post("/orders", function (req, res) {
                         format: "A4",
                         countInFile: 1,
                         url: ress,
-                        price: "0"
+                        price: "0",
+                        sides: "one",
+                        color: "bw"
+
                     }
 
                     res.send(order)

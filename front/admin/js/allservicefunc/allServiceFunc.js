@@ -44,17 +44,17 @@ countInPage.addEventListener("change", function (e){
 })
 
 function renderPages(res){
-    let backButton = `<li class="page-item"><button toPage="${currentPage-1}" onclick=toPage(event.target) class="page-link">Назад</button></li>`
-    let backButtonDisabled = `<li class="page-item disabled"><button class="page-link">Назад</button></li>`
-    let nextButton = `<li class="page-item"><button toPage="${currentPage+1}" onclick=toPage(event.target) class="page-link" href="#">Далі</button></li>`
-    let nextButtonDisabled = `<li class="page-item disabled"><button class="page-link" href="#">Далі</button></li>`
+    let backButton = `<li class="page-item colorPages"><button toPage="${currentPage-1}" onclick=toPage(event.target) class="page-link colorPages">Назад</button></li>`
+    let backButtonDisabled = `<li class="page-item colorPages disabled"><button class="page-link">Назад</button></li>`
+    let nextButton = `<li class="page-item colorPages"><button toPage="${currentPage+1}" onclick=toPage(event.target) class="page-link colorPages" href="#">Далі</button></li>`
+    let nextButtonDisabled = `<li class="page-item colorPages disabled"><button class="page-link" href="#">Далі</button></li>`
     let resultHtml = ""
     if(res.data.pageCount === 1 || res.data.pageCount === "1"){
         resultHtml = resultHtml+backButtonDisabled
         if(res.data.page === 1){
-            resultHtml = resultHtml+`<li class="page-item active"><button class="page-link" toPage="1">1</button></li>`
+            resultHtml = resultHtml+`<li class="page-item colorPages active"><button class="page-link colorPages" toPage="1">1</button></li>`
         } else {
-            resultHtml = resultHtml+`<li class="page-item"><button onclick=toPage(event.target) class="page-link" toPage="1">1</button></li>`
+            resultHtml = resultHtml+`<li class="page-item colorPages"><button onclick=toPage(event.target) class="page-link colorPages" toPage="1">1</button></li>`
         }
         resultHtml = resultHtml+nextButtonDisabled
     }
@@ -70,12 +70,12 @@ function renderPages(res){
             }
             if(i === res.data.page){
                 // console.log(`dobavlena active stranica: ${i}`);
-                resultHtml = resultHtml+`<li class="page-item active"><button class="page-link" toPage="${i}">${i}</button></li>`
+                resultHtml = resultHtml+`<li class="page-item colorPages active"><button class="page-link colorPages" toPage="${i}">${i}</button></li>`
 
             } else {
                 if(i > 0 && i <= res.data.pageCount){
                     // console.log(`dobavlena stranica: ${i}`);
-                    resultHtml = resultHtml+`<li class="page-item"><button class="page-link" onclick=toPage(event.target) toPage="${i}">${i}</button></li>`
+                    resultHtml = resultHtml+`<li class="page-item colorPages"><button class="page-link colorPages" onclick=toPage(event.target) toPage="${i}">${i}</button></li>`
                 }
             }
             if(i === res.data.page+3){

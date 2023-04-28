@@ -63,7 +63,7 @@ function renderOrdersItem(res){
     res.data.data.forEach(o => {
         let tr = document.createElement("tr");
         tr.classList.add("trColumn");
-
+        tr.classList.add("color");
         let innerHTML = ""
         if(o.executorId === undefined){
             innerHTML = `<td><div class="btn btn-sm">${o.id}</div></td>

@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'GothamBold';
+    src: url('../files/data/gotham_bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GothamBook';
+    src: url('../files/data/gotham_book.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none;   /* Chrome/Safari/Opera */
@@ -5,9 +18,30 @@
     -moz-user-select: none;      /* Firefox */
     -ms-user-select: none;       /* Internet Explorer/Edge */
     user-select: none;           /* Non-prefixed version, currently*/
+    font-family: 'GothamBold', sans-serif;
+}
+body {
+    /* set margin to 0 and overflow to hidden,
+    to use the complete page */
+    margin: 0;
+    /*overflow: hidden;*/
+    /*background: rgba(245, 245, 245, 0.96);*/
+    background: #E9E6DA;
 }
 .gray {
     background: #767676;
+}
+.cursorPointer {
+    cursor: pointer;
+}
+.colorPages {
+    background: #f1eee3;
+}
+.colorSelect {
+    background: #f1eee3;
+}
+.colorText {
+    background: #e0dbd0;
 }
 iframe {
     display: block;

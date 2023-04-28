@@ -201,6 +201,8 @@ function nonUploadFunc(){
             file1.calc = e.data.calc
             file1.price = e.data.price
             file1.url = e.data.url
+            file1.sides = e.data.sides
+            file1.color = e.data.color
             allFiles.push(file1)
             file1.createFileContainer()
             file1.pick({target: file1.container})

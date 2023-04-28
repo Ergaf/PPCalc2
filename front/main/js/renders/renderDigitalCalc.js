@@ -112,7 +112,7 @@ function renderDigitalCalc(priceCalc){
         if(thisFile.lamination === undefined || thisFile.lamination === null){
             thisFile.lamination = "без ламінації"
         }
-        renderOptions("ламінування", "lamination", laminationButtons)
+        renderOptions("ламінуванння", "lamination", laminationButtons)
         laminationButtonsL.classList.remove("d-none")
 
         if(thisFile.binding === undefined || thisFile.binding === null){

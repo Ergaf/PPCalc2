@@ -33,6 +33,7 @@ function renderUsersItem(res){
     res.data.data.forEach(o => {
         let tr = document.createElement("tr");
         tr.classList.add("trColumn");
+        tr.classList.add("color");
         let innerHTML = `<td><div class="btn">${o.id}</div></td>
                             <td><div class="btn">${o.name}</div></td>
                             <td><div class="btn">${o.mail}</div></td>
