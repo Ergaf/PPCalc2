@@ -100,7 +100,8 @@ function ifConditions(req, res, body, results1, results2, configSQLConnection, p
         priceCalc = priceCalc + roundCornerPrice
         priceCalc = priceCalc + cowerPrice
         if(bindingPrice[0]){
-            priceCalc = priceCalc + bindingPrice[0][1]
+            let bindingPriceAll = bindingPrice[0][1]*thisFile.count
+            priceCalc = priceCalc + bindingPriceAll
         }
         thisFile.price = priceCalc;
         // console.log(thisFile.price);

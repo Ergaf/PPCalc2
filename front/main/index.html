@@ -250,15 +250,9 @@
                                 <div class="input-group d-flex pt-2 align-items-center justify-content-center m-auto">
                                     <input type="number" class="input-group-text gray inputs inputFormat" id="sizeX">
                                     <span class="input-group-text gray inputFormat">мм</span>
-                                    <button class="btn input-group-text gray inputFormatButton orientButton" id="orient">
-                                        <!--                                        <img src="img/orient.png" class="mouseScroll" alt="">-->
-                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 20.9907L6.68076 14.725M1 20.9907L6.68076 27.2563M1 20.9907L27.0809 20.9907"
-                                                  stroke="black" stroke-width="0.767087"/>
-                                            <path d="M27.081 7.40216L21.4002 1.13647M27.081 7.40216L21.4002 13.6678M27.081 7.40216L1.00006 7.40216"
-                                                  stroke="black" stroke-width="0.767087"/>
-                                        </svg>
+                                    <button class="btn input-group-text gray inputFormatButton orientButton"
+                                            id="orient">
+                                        <img src="img/orient.svg" class="mouseScroll" alt="">
                                     </button>
                                     <input type="number" class="input-group-text gray inputs inputFormat" id="sizeY">
                                     <span class="input-group-text gray inputFormat">мм</span>
@@ -380,10 +374,14 @@
                                     <div class="accordion-body">
 
                                         <div class="accordion-item moreOptions" id="laminationButtonsAccordion">
-                                            <div class="d-flex justify-content-center accordion-header" id="laminationButtonsHeadThree">
-                                                <button class="accordion-button btn dopOptionButton collapsed" type="button"
+                                            <div class="d-flex justify-content-center accordion-header"
+                                                 id="laminationButtonsHeadThree">
+                                                <button class="accordion-button btn dopOptionButton collapsed"
+                                                        type="button"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#laminationButtonsCollapseThree" aria-expanded="false"
+                                                        data-bs-target="#laminationButtonsCollapseThree"
+                                                        aria-expanded="false"
+                                                        id="laminationButtonsAccordionButton"
                                                         aria-controls="laminationButtonsCollapseThree">
                                                     Заламінувати
                                                 </button>
@@ -392,17 +390,22 @@
                                                  aria-labelledby="laminationButtonsHeadThree"
                                                  data-bs-parent="">
                                                 <div class="accordion-body">
-                                                    <div class="row row-cols-2 align-items-center" id="laminationButtons"></div>
-                                                    <div class="horizontalLine" id="laminationButtonsL"></div>
+                                                    <div class="row row-cols-2 align-items-center"
+                                                         id="laminationButtons"></div>
+                                                    <!--                                                    <div class="horizontalLine" id="laminationButtonsL"></div>-->
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="accordion-item moreOptions d-none" id="bindingButtonsAccordion">
-                                            <div class="d-flex justify-content-center accordion-header" id="bindingButtonsHeadThree">
-                                                <button class="accordion-button btn dopOptionButton collapsed" type="button"
+                                            <div class="d-flex justify-content-center accordion-header"
+                                                 id="bindingButtonsHeadThree">
+                                                <button class="accordion-button btn dopOptionButton collapsed"
+                                                        type="button"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#bindingButtonsCollapseThree" aria-expanded="false"
+                                                        data-bs-target="#bindingButtonsCollapseThree"
+                                                        aria-expanded="false"
+                                                        id="bindingButtonsAccordionButton"
                                                         aria-controls="">
                                                     Брошурування
                                                 </button>
@@ -411,33 +414,43 @@
                                                  aria-labelledby="bindingButtonsHeadThree"
                                                  data-bs-parent="">
                                                 <div class="accordion-body">
-<!--                                                    <div class="invisible row row-cols-2 align-items-center" id="bindingButtons"></div>-->
-                                                    <div class="invisible horizontalLine" id="bindingButtonsL"></div>
-
-                                                    <div class="invisible row row-cols-2 align-items-center" id="bindingSelectButtons"></div>
-                                                    <div class="invisible horizontalLine" id="bindingSelectButtonsL"></div>
-
-                                                    <div class="invisible row row-cols-2 align-items-center" id="cowerButtons"></div>
-                                                    <div class="invisible horizontalLine" id="cowerButtonsL"></div>
-
-                                                    <div class="invisible row row-cols-2 align-items-center" id="frontLiningButtons"></div>
-                                                    <div class="invisible horizontalLine" id="frontLiningButtonsL"></div>
-
-                                                    <div class="invisible d-flex justify-content-center" style="font-weight: 600" id="backLiningText"></div>
-                                                    <div class="invisible horizontalLine" id="backLiningTextL"></div>
-
-                                                    <div class="invisible row row-cols-2 align-items-center" id="backLiningButtons"></div>
-                                                    <div class="invisible horizontalLine" id="backLiningButtonsL"></div>
+                                                    <!--&lt;!&ndash;                                                    <div class="invisible row row-cols-2 align-items-center" id="bindingButtons"></div>&#45;&#45;-->
+                                                    <!--                                                    <div class="invisible horizontalLine" id="bindingButtonsL"></div>-->
+                                                    <div class="invisible row row-cols-2 align-items-center"
+                                                         id="bindingSelectButtons"></div>
+                                                    <!--                                                    <div class="invisible horizontalLine" id="bindingSelectButtonsL"></div>-->
+                                                    <div class="invisible row row-cols-2 align-items-center"
+                                                         id="cowerButtons"></div>
+                                                    <!--                                                    <div class="invisible horizontalLine" id="cowerButtonsL"></div>-->
+                                                    <div class="invisible row row-cols-2 align-items-center"
+                                                         id="frontLiningButtons"></div>
+                                                    <!--                                                    <div class="invisible horizontalLine" id="frontLiningButtonsL"></div>-->
+                                                    <div class="invisible d-flex justify-content-center"
+                                                         style="font-weight: 600" id="backLiningText"></div>
+                                                    <!--                                                    <div class="invisible horizontalLine" id="backLiningTextL"></div>-->
+                                                    <div class="invisible row row-cols-2 align-items-center"
+                                                         id="backLiningButtons"></div>
+                                                    <!--                                                    <div class="invisible horizontalLine" id="backLiningButtonsL"></div>-->
 
                                                     <div id="bindingButtons" class="d-flex justify-content-center">
-                                                        <div class="bindingButton">
-                                                            <img class="bindingButtonSvg" src="img/dopoptions/skoba.svg" alt="">
+                                                        <div class="iconButton" toFile="на скобу">
+                                                            <img class="iconButtonSvg"
+                                                                 src="img/dopoptions/binding/skoba.svg" alt="">
+                                                            <div class="iconButtonText">скоба</div>
                                                         </div>
-                                                        <div class="bindingButton">
-                                                            <img class="bindingButtonSvg" src="img/dopoptions/metall.svg" alt="">
+                                                        <div class="iconButton" toFile="на металеву">
+                                                            <img class="iconButtonSvg"
+                                                                 src="img/dopoptions/binding/metall.svg" alt="">
+                                                            <div class="iconButtonText">метал</div>
                                                         </div>
-                                                        <div class="bindingButton">
-                                                            <img class="bindingButtonSvg" src="img/dopoptions/plastic.svg" alt="">
+                                                        <div class="iconButton" toFile="на пластикову">
+                                                            <img class="iconButtonSvg"
+                                                                 src="img/dopoptions/binding/plastic.svg" alt="">
+                                                            <div class="iconButtonText">пластик</div>
+                                                        </div>
+                                                        <div id="cantBinding" class="iconButtonText">
+                                                            1 лист чи дуже багато - немає можливості зшити.
+                                                            Додайте файл що має листів: 2-400
                                                         </div>
                                                     </div>
 
@@ -446,10 +459,14 @@
                                         </div>
 
                                         <div class="accordion-item moreOptions" id="bigButtonsAccordion">
-                                            <div class="d-flex justify-content-center accordion-header" id="bigButtonsHeadThree">
-                                                <button class="accordion-button btn dopOptionButton collapsed" type="button"
+                                            <div class="d-flex justify-content-center accordion-header"
+                                                 id="bigButtonsHeadThree">
+                                                <button class="accordion-button btn dopOptionButton collapsed"
+                                                        type="button"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#bigButtonsCollapseThree" aria-expanded="false"
+                                                        data-bs-target="#bigButtonsCollapseThree"
+                                                        aria-expanded="false"
+                                                        id="bigButtonsAccordionButton"
                                                         aria-controls="">
                                                     Зігнути
                                                 </button>
@@ -458,17 +475,39 @@
                                                  aria-labelledby="bigButtonsHeadThree"
                                                  data-bs-parent="">
                                                 <div class="accordion-body">
-                                                    <div class="row row-cols-2 align-items-center" id="bigButtons"></div>
-                                                    <div class="horizontalLine" id="bigButtonsL"></div>
+<!--                                                    <div class="row row-cols-2 align-items-center" id="bigButtons"></div>-->
+                                                    <!--                                                    <div class="horizontalLine" id="bigButtonsL"></div>-->
+
+                                                    <div id="bigButtons" class="d-flex justify-content-center">
+                                                        <div class="iconButton" toFile="згинання навпіл">
+                                                            <img class="iconButtonSvg"
+                                                                 src="img/dopoptions/big/1big.svg" alt="">
+                                                            <div class="iconButtonText">згинання навпіл</div>
+                                                        </div>
+                                                        <div class="iconButton" toFile="2 згиби">
+                                                            <img class="iconButtonSvg"
+                                                                 src="img/dopoptions/big/2big.svg" alt="">
+                                                            <div class="iconButtonText">2 згиби</div>
+                                                        </div>
+                                                        <div class="iconButton" toFile="3 згиби">
+                                                            <img class="iconButtonSvg"
+                                                                 src="img/dopoptions/big/3big.svg" alt="">
+                                                            <div class="iconButtonText">3 згиби</div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="accordion-item moreOptions" id="holesButtonsAccordion">
-                                            <div class="d-flex justify-content-center accordion-header" id="holesButtonsHeadThree">
-                                                <button class="accordion-button btn dopOptionButton collapsed" type="button"
+                                            <div class="d-flex justify-content-center accordion-header"
+                                                 id="holesButtonsHeadThree">
+                                                <button class="accordion-button btn dopOptionButton collapsed"
+                                                        type="button"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#holesButtonsCollapseThree" aria-expanded="false"
+                                                        data-bs-target="#holesButtonsCollapseThree"
+                                                        aria-expanded="false"
+                                                        id="holesButtonsAccordionButton"
                                                         aria-controls="">
                                                     Дірки
                                                 </button>
@@ -477,61 +516,91 @@
                                                  aria-labelledby="holesButtonsHeadThree"
                                                  data-bs-parent="">
                                                 <div class="accordion-body">
-                                                    <div class="row row-cols-2 align-items-center" id="holesButtons"></div>
-                                                    <div class="horizontalLine" id="holesButtonsL"></div>
+<!--                                                    <div class="row row-cols-2 align-items-center" id="holesButtons"></div>-->
+                                                    <!--                                                    <div class="horizontalLine" id="holesButtonsL"></div>-->
+
+                                                    <div id="holesButtons" class="d-flex justify-content-center">
+                                                        <div class="iconButton" toFile="1 отвір 5 мм">
+                                                            <img class="iconButtonSvg"
+                                                                 src="img/dopoptions/holes/1hole.svg" alt="">
+                                                            <div class="iconButtonText">1 отвір 5 мм</div>
+                                                        </div>
+                                                        <div class="iconButton" toFile="2 отвіра 5 мм">
+                                                            <img class="iconButtonSvg"
+                                                                 src="img/dopoptions/holes/2hole.svg" alt="">
+                                                            <div class="iconButtonText">2 отвіра 5 мм</div>
+                                                        </div>
+                                                        <div class="iconButton" toFile="3 отвіра 5 мм">
+                                                            <img class="iconButtonSvg"
+                                                                 src="img/dopoptions/holes/3hole.svg" alt="">
+                                                            <div class="iconButtonText">3 отвіра 5 мм</div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="accordion-item moreOptions" id="roundCornerButtonsAccordion">
-                                            <div class="d-flex justify-content-center accordion-header" id="roundCornerButtonsHeadThree">
-                                                <button class="accordion-button btn dopOptionButton collapsed" type="button"
+                                            <div class="d-flex justify-content-center accordion-header"
+                                                 id="roundCornerButtonsHeadThree">
+                                                <button class="accordion-button btn dopOptionButton collapsed"
+                                                        type="button"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#roundCornerButtonsCollapseThree" aria-expanded="false"
+                                                        data-bs-target="#roundCornerButtonsCollapseThree"
+                                                        aria-expanded="false"
+                                                        id="roundCornerButtonsAccordionButton"
                                                         aria-controls="">
-                                                    Скруглення кутів
+                                                    Обрізка/скруглення кутів
                                                 </button>
                                             </div>
-                                            <div id="roundCornerButtonsCollapseThree" class="accordion-collapse collapse"
+                                            <div id="roundCornerButtonsCollapseThree"
+                                                 class="accordion-collapse collapse"
                                                  aria-labelledby="roundCornerButtonsHeadThree"
                                                  data-bs-parent="">
                                                 <div class="accordion-body">
-                                                    <div class="row row-cols-2 align-items-center" id="roundCornerButtons"></div>
-                                                    <div class="horizontalLine" id="roundCornerButtonsL"></div>
+                                                    <div class="row row-cols-2 align-items-center"
+                                                         id="roundCornerButtons"></div>
+                                                    <!--                                                    <div class="horizontalLine" id="roundCornerButtonsL"></div>-->
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="accordion-item moreOptions" id="stickerCuttingAccordion">
-                                            <div class="d-flex justify-content-center accordion-header" id="stickerCuttingHeadThree">
-                                                <button class="accordion-button btn dopOptionButton collapsed" type="button"
+                                            <div class="d-flex justify-content-center accordion-header"
+                                                 id="stickerCuttingHeadThree">
+                                                <button class="accordion-button btn dopOptionButton collapsed disabled"
+                                                        type="button"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#stickerCuttingCollapseThree" aria-expanded="false"
+                                                        data-bs-target="#stickerCuttingCollapseThree"
+                                                        aria-expanded="false"
+                                                        id="stickerCuttingAccordionButton"
                                                         aria-controls="">
-                                                    Фігурна порізка
+                                                    Фігурна порізка (в розробці)
                                                 </button>
                                             </div>
                                             <div id="stickerCuttingCollapseThree" class="accordion-collapse collapse"
                                                  aria-labelledby="stickerCuttingHeadThree"
                                                  data-bs-parent="">
                                                 <div class="accordion-body">
-                                                    <div class="row row-cols-2 align-items-center" id="stickerCutting"></div>
+                                                    <div class="row row-cols-2 align-items-center"
+                                                         id="stickerCutting"></div>
                                                     <div class="horizontalLine" id="stickerCuttingL"></div>
-                                                    <div class="row row-cols-2 align-items-center" id="stickerCuttingThis"></div>
-                                                    <div class="horizontalLine" id="stickerCuttingThisL"></div>
+                                                    <div class="row row-cols-2 align-items-center"
+                                                         id="stickerCuttingThis"></div>
+                                                    <!--                                                    <div class="horizontalLine" id="stickerCuttingThisL"></div>-->
                                                 </div>
                                             </div>
                                         </div>
 
 
                                         <div class="row row-cols-2 align-items-center" id="luvers"></div>
-                                        <div class="horizontalLine" id="luversL"></div>
+<!--                                        <div class="horizontalLine" id="luversL"></div>-->
                                         <div class="row row-cols-2 align-items-center" id="bannerVarit"></div>
-                                        <div class="horizontalLine" id="bannerVaritL"></div>
+<!--                                        <div class="horizontalLine" id="bannerVaritL"></div>-->
                                         <div class="row row-cols-2 align-items-center" id="floorLamination"></div>
-                                        <div class="horizontalLine" id="floorLaminationL"></div>
+<!--                                        <div class="horizontalLine" id="floorLaminationL"></div>-->
                                         <div class="row row-cols-2 align-items-center" id="widthLamination"></div>
-                                        <div class="horizontalLine" id="widthLaminationL"></div>
+<!--                                        <div class="horizontalLine" id="widthLaminationL"></div>-->
                                     </div>
                                 </div>
                             </div>
@@ -573,25 +642,43 @@
                     </div>
                 </div>
 
-                <div class="d-flex invisible">
-                    <div id="ifPrintCountLists">
-                        <div class="input-group justify-content-center phoneNDisplay">
-                            <span class="input-group-text gray">У ф.:</span>
-                            <input type="number" class="input-group-text gray inputsTotal" id="countInFile" disabled>
-                            <span class="input-group-text gray" id="storinki">сторінок</span>
-                        </div>
-                        <div class="input-group justify-content-center phoneNDisplay">
-                            <span class="input-group-text gray">Вит. арк.:</span>
-                            <input type="number" class="input-group-text gray inputsTotal" id="realCount" disabled>
-                            <span class="input-group-text gray">шт.</span>
-                        </div>
-                    </div>
 
-                    <div>
-                        <div class="input-group justify-content-center phoneNDisplay" id="allCountElement">
-                            <span class="input-group-text gray">Заг.: </span>
-                            <input type="number" class="input-group-text gray inputsTotal" id="allPaper" disabled>
-                            <span class="input-group-text gray" id="arkushi"></span>
+                <div class="accordion-item moreOptions" id="dopAccordion">
+                    <div class="d-flex justify-content-center accordion-header"
+                         id="dopHeadThree">
+                        <button class="accordion-button btn dopOptionButton collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#dopCollapseThree"
+                                aria-expanded="false"
+                                id="dopAccordionButton"
+                                aria-controls="">
+                             Додаткові дані
+                        </button>
+                    </div>
+                    <div id="dopCollapseThree" class="accordion-collapse collapse"
+                         aria-labelledby="dopHeadThree"
+                         data-bs-parent="">
+                        <div class="accordion-body">
+                            <div class="d-flex">
+                                <div id="ifPrintCountLists" class="d-flex justify-content-center">
+                                    <div class="input-group justify-content-center phoneNDisplay">
+                                        <span class="input-group-text">У ф.:</span>
+                                        <input type="number" class="input-group-text inputsTotal" id="countInFile">
+                                        <span class="input-group-text" id="storinki">сторінок</span>
+                                    </div>
+                                    <div class="input-group justify-content-center phoneNDisplay">
+                                        <span class="input-group-text gray">Вит. арк.:</span>
+                                        <input type="number" class="input-group-text gray inputsTotal" id="realCount" disabled>
+                                        <span class="input-group-text gray">шт.</span>
+                                    </div>
+                                    <div class="input-group justify-content-center phoneNDisplay" id="allCountElement">
+                                        <span class="input-group-text gray">Заг.: </span>
+                                        <input type="number" class="input-group-text gray inputsTotal" id="allPaper" disabled>
+                                        <span class="input-group-text gray" id="arkushi"></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -701,10 +788,10 @@
                         ОБРОБКА...
                     </div>
                 </div>
-            </div>
-            </form>
         </div>
+        </form>
     </div>
+</div>
 </div>
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
@@ -727,7 +814,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <div type="button" id="nonUpload2" class="btn d-none" data-bs-dismiss="modal">ПРОРАХУВАТИ БЕЗ ФАЙЛУ</div>
+                    <div type="button" id="nonUpload2" class="btn d-none" data-bs-dismiss="modal">ПРОРАХУВАТИ БЕЗ
+                        ФАЙЛУ
+                    </div>
                     <div type="button" id="upload2" class="btn">ЗАВАНТАЖИТИ</div>
                     <div type="button" id="uploadLoad2" class="btn d-none" disabled>
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>

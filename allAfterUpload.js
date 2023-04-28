@@ -112,7 +112,7 @@ async function processing(filePath, cookies, filenameToNorm, res, id, calcType, 
                     console.log(err);
                 } else {
                     // pdf.getInfoInPdf(filePath, cookies, filenameToNorm, res, id, __dirname + `/files/${cookies}/${id}/pdf/file1.pdf`, configSQLConnection)
-                    console.log("ФАЙЛ " + id + " " + filenameToNorm + " обновлен");
+                    console.log("ФАЙЛ " + id + " " + filenameToNorm + " обновлен, have "+dataInPdf.numpages+" pages");
                     let ress = {
                         url: `/files/${cookies}/${id}/pdf/file1.pdf`,
                     }

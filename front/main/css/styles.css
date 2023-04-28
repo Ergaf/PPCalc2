@@ -448,6 +448,7 @@ body {
 }
 .phoneNDisplay {
     display: flex;
+    flex-direction: column;
 }
 .modalMob {
     width: 40vw;

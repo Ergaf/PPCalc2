@@ -24,7 +24,6 @@ module.exports = {
                         id: id,
                         name: filenameToNorm,
                         url: ress,
-                        format: "A4",
                         countInFile: dataInPdf.numpages
                     }
                     res.send(order)

@@ -69,6 +69,7 @@ class file {
         Item.innerText = this._name;
 
         let cancelButton = document.createElement('div');
+        this.containerCancelButton = cancelButton;
         cancelButton.onmousedown = this.deleteThis.bind(this);
         cancelButton.classList.add('btn-close');
         Item.appendChild(cancelButton);
@@ -155,7 +156,7 @@ class file {
 
                     if (this.url2.pdf) {
                         // document.querySelector("#page_count").innerText = thisFile.url2.pdf.numPages
-                        this.countInFile = this.url2.pdf.numPages
+                        // this.countInFile = this.url2.pdf.numPages
                     }
 
                     renderListIfPdf(x, y, list, containerForPdf, pdff, myPdf, PdfRenderer, this)
@@ -271,6 +272,7 @@ class file {
                 }
             })
             this.container.classList.add("btnm-act")
+            this.containerCancelButton.classList.add("btn-close-white")
             thisFile = this
             this.renderSettings()
             // document.querySelector(".settingsContainer").style.display = "flex"
@@ -280,6 +282,7 @@ class file {
 
     removePick() {
         this.container.classList.remove("btnm-act")
+        this.containerCancelButton.classList.remove("btn-close-white")
     }
 
     deleteThis() {
@@ -350,21 +353,21 @@ class file {
         price.value = thisFile.price
 
         //lines in dop options-------------------------------------------
-        laminationButtonsL.classList.add("d-none")
-        bindingButtonsL.classList.add("d-none")
-        bindingSelectButtonsL.classList.add("d-none")
-        cowerButtonsL.classList.add("d-none")
-        frontLiningButtonsL.classList.add("d-none")
-        backLiningTextL.classList.add("d-none")
-        bigButtonsL.classList.add("d-none")
-        holesButtonsL.classList.add("d-none")
-        roundCornerButtonsL.classList.add("d-none")
-        stickerCuttingThisL.classList.add("d-none")
-        stickerCuttingL.classList.add("d-none")
-        luversL.classList.add("d-none")
-        bannerVaritL.classList.add("d-none")
-        floorLaminationL.classList.add("d-none")
-        widthLaminationL.classList.add("d-none")
+        // laminationButtonsL.classList.add("d-none")
+        // bindingButtonsL.classList.add("d-none")
+        // bindingSelectButtonsL.classList.add("d-none")
+        // cowerButtonsL.classList.add("d-none")
+        // frontLiningButtonsL.classList.add("d-none")
+        // backLiningTextL.classList.add("d-none")
+        // bigButtonsL.classList.add("d-none")
+        // holesButtonsL.classList.add("d-none")
+        // roundCornerButtonsL.classList.add("d-none")
+        // stickerCuttingThisL.classList.add("d-none")
+        // stickerCuttingL.classList.add("d-none")
+        // luversL.classList.add("d-none")
+        // bannerVaritL.classList.add("d-none")
+        // floorLaminationL.classList.add("d-none")
+        // widthLaminationL.classList.add("d-none")
         //lines in dop options-------------------------------------------
 
         formatContainer.classList.add("d-none");
@@ -594,7 +597,7 @@ class file {
         // renderListAndCard()
         if (thisFile.url2.pdf) {
             document.querySelector("#page_count").innerText = thisFile.url2.pdf.numPages
-            this.countInFile = thisFile.url2.pdf.numPages
+            // this.countInFile = thisFile.url2.pdf.numPages
         }
         if (thisFile) {
             lastFileId = thisFile._id

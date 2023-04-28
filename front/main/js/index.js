@@ -46,27 +46,33 @@ const photoCalcSelect = document.querySelector("#photoCalcSelect");
 
 //lines in dop opt
 const laminationButtonsAccordion = document.querySelector("#laminationButtonsAccordion");
-const laminationButtonsL = document.querySelector("#laminationButtonsL");
+const laminationButtonsAccordionButton = document.querySelector("#laminationButtonsAccordionButton");
+// const laminationButtonsL = document.querySelector("#laminationButtonsL");
 const bindingButtonsAccordion = document.querySelector("#bindingButtonsAccordion");
-const bindingButtonsL = document.querySelector("#bindingButtonsL");
-const bindingSelectButtonsL = document.querySelector("#bindingSelectButtonsL");
-const cowerButtonsL = document.querySelector("#cowerButtonsL");
-const frontLiningButtonsL = document.querySelector("#frontLiningButtonsL");
-const backLiningTextL = document.querySelector("#backLiningTextL");
-const backLiningButtonsL = document.querySelector("#backLiningButtonsL");
+const bindingButtonsAccordionButton = document.querySelector("#bindingButtonsAccordionButton");
+// const bindingButtonsL = document.querySelector("#bindingButtonsL");
+// const bindingSelectButtonsL = document.querySelector("#bindingSelectButtonsL");
+// const cowerButtonsL = document.querySelector("#cowerButtonsL");
+// const frontLiningButtonsL = document.querySelector("#frontLiningButtonsL");
+// const backLiningTextL = document.querySelector("#backLiningTextL");
+// const backLiningButtonsL = document.querySelector("#backLiningButtonsL");
 const bigButtonsAccordion = document.querySelector("#bigButtonsAccordion");
-const bigButtonsL = document.querySelector("#bigButtonsL");
+const bigButtonsAccordionButton = document.querySelector("#bigButtonsAccordionButton");
+// const bigButtonsL = document.querySelector("#bigButtonsL");
 const holesButtonsAccordion = document.querySelector("#holesButtonsAccordion");
-const holesButtonsL = document.querySelector("#holesButtonsL");
+const holesButtonsAccordionButton = document.querySelector("#holesButtonsAccordionButton");
+// const holesButtonsL = document.querySelector("#holesButtonsL");
 const roundCornerButtonsAccordion = document.querySelector("#roundCornerButtonsAccordion");
-const roundCornerButtonsL = document.querySelector("#roundCornerButtonsL");
+const roundCornerButtonsAccordionButton = document.querySelector("#roundCornerButtonsAccordionButton");
+// const roundCornerButtonsL = document.querySelector("#roundCornerButtonsL");
 const stickerCuttingAccordion = document.querySelector("#stickerCuttingAccordion");
-const stickerCuttingThisL = document.querySelector("#stickerCuttingThisL");
-const stickerCuttingL = document.querySelector("#stickerCuttingL");
-const luversL = document.querySelector("#luversL");
-const bannerVaritL = document.querySelector("#bannerVaritL");
-const floorLaminationL = document.querySelector("#floorLaminationL");
-const widthLaminationL = document.querySelector("#widthLaminationL");
+const stickerCuttingAccordionButton = document.querySelector("#stickerCuttingAccordionButton");
+// const stickerCuttingThisL = document.querySelector("#stickerCuttingThisL");
+// const stickerCuttingL = document.querySelector("#stickerCuttingL");
+// const luversL = document.querySelector("#luversL");
+// const bannerVaritL = document.querySelector("#bannerVaritL");
+// const floorLaminationL = document.querySelector("#floorLaminationL");
+// const widthLaminationL = document.querySelector("#widthLaminationL");
 //lines in dop opt
 
 let price = document.querySelector(".price")
@@ -99,3 +105,115 @@ let imgInp = document.querySelector("#imgInp")
 let iframe = document.querySelector("#iframe")
 let form = document.querySelector("#formmm")
 let progressbar = document.querySelector("#progressbar")
+
+
+let cantBinding = document.querySelector("#cantBinding")
+Array.prototype.slice.call(bindingButtons.children).forEach(e => {
+    e.addEventListener("click", function () {
+        if(e.getAttribute("toFile")){
+            if(e.getAttribute("toFile") === thisFile.binding){
+                let data = {
+                    id: thisFile._id,
+                    parameter: "binding",
+                    value: null
+                }
+                sendData("/orders", "PUT", JSON.stringify(data)).then(o => {
+                    if (o.status === "ok") {
+                        thisFile.binding = null
+                        thisFile.price = o.price
+                        thisFile.renderSettings()
+                    } else {
+                        showError(o)
+                    }
+                })
+            } else {
+                let data = {
+                    id: thisFile._id,
+                    parameter: "binding",
+                    value: e.getAttribute("toFile")
+                }
+                sendData("/orders", "PUT", JSON.stringify(data)).then(o => {
+                    if (o.status === "ok") {
+                        thisFile.binding = e.getAttribute("toFile")
+                        thisFile.price = o.price
+                        thisFile.renderSettings()
+                    } else {
+                        showError(o)
+                    }
+                })
+            }
+        }
+    })
+});
+
+Array.prototype.slice.call(bigButtons.children).forEach(e => {
+    e.addEventListener("click", function () {
+        if(e.getAttribute("toFile") === thisFile.big){
+            let data = {
+                id: thisFile._id,
+                parameter: "big",
+                value: null
+            }
+            sendData("/orders", "PUT", JSON.stringify(data)).then(o => {
+                if (o.status === "ok") {
+                    thisFile.big = null
+                    thisFile.price = o.price
+                    thisFile.renderSettings()
+                } else {
+                    showError(o)
+                }
+            })
+        } else {
+            let data = {
+                id: thisFile._id,
+                parameter: "big",
+                value: e.getAttribute("toFile")
+            }
+            sendData("/orders", "PUT", JSON.stringify(data)).then(o => {
+                if (o.status === "ok") {
+                    thisFile.big = e.getAttribute("toFile")
+                    thisFile.price = o.price
+                    thisFile.renderSettings()
+                } else {
+                    showError(o)
+                }
+            })
+        }
+    })
+});
+
+Array.prototype.slice.call(holesButtons.children).forEach(e => {
+    e.addEventListener("click", function () {
+        if(e.getAttribute("toFile") === thisFile.holes){
+            let data = {
+                id: thisFile._id,
+                parameter: "holes",
+                value: null
+            }
+            sendData("/orders", "PUT", JSON.stringify(data)).then(o => {
+                if (o.status === "ok") {
+                    thisFile.holes = null
+                    thisFile.price = o.price
+                    thisFile.renderSettings()
+                } else {
+                    showError(o)
+                }
+            })
+        } else {
+            let data = {
+                id: thisFile._id,
+                parameter: "holes",
+                value: e.getAttribute("toFile")
+            }
+            sendData("/orders", "PUT", JSON.stringify(data)).then(o => {
+                if (o.status === "ok") {
+                    thisFile.holes = e.getAttribute("toFile")
+                    thisFile.price = o.price
+                    thisFile.renderSettings()
+                } else {
+                    showError(o)
+                }
+            })
+        }
+    })
+});

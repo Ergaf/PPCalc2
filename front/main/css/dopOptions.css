@@ -1,10 +1,30 @@
-.bindingButton {
+.iconButton {
     width: 18vw;
+    height: 14vw;
     border-radius: 1.5vw;
-    border: black 0.1vw solid;
+    border: rgba(0, 0, 0, 0) 0.1vw solid;
+    margin: 0.5vw;
+    padding: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.bindingButtonSvg {
-    width: 6vw;
-    margin-left: 3vw;
+.iconButton:hover {
+    border: #c0c0c0 0.1vw solid;
+}
+.activeChose {
+    border: #000000 0.1vw solid;
+}
+.activeChose:hover {
+    border: #000000 0.1vw solid;
+}
+.iconButtonSvg {
+    width: 7vw;
+    margin: auto;
     /*width: 10vw;*/
+}
+.iconButtonText {
+    font-family: 'GothamBook', sans-serif;
+    font-size: 0.9vw;
 }

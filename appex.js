@@ -395,7 +395,6 @@ app.get("/orders", function (req, res) {
                     }
                     let order = e
                     order.url = ress
-                    order.countInFile = 1
                     files.push(order)
                 })
             }

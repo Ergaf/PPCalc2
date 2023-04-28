@@ -319,7 +319,6 @@ fetch('/getprices')
                         file1.backLining = o.backLining;
                         file1.big = o.big;
                         file1.holes = o.holes;
-                        file1.countInFile = o.countInFile;
                         file1.allPaperCount = o.allPaperCount;
                         file1.orient = o.orient;
                         file1.stickerCutting = o.stickerCutting;
