@@ -83,24 +83,24 @@ div.gif:hover .anim {
         position: absolute;
         width: 94vw;
         left: 2vw;
-        top: 20vw;
+        top: 30vw;
     }
     .photoPrintContainer {
         position: absolute;
         width: 40vw;
         left: 50vw;
-        top: 120vw;
+        top: 115vw;
     }
     .cupPrintContainer {
         position: absolute;
-        width: 40vw;
+        width: 44vw;
         left: 5vw;
-        top: 115vw;
+        top: 113vw;
     }
     .postPrintContainer {
         position: absolute;
         width: 60vw;
         left: 20vw;
-        top: 160vw;
+        top: 150vw;
     }
 }

@@ -28,14 +28,6 @@
     /*!* Друк *!*/
 
 }
-.dopOptionButton.collapsed {
-    background: #E9E6DA;
-    /*border: black solid 0.1vw;*/
-    border-radius: 7vw;
-}
-.dopOptionButton:focus {
-    border: black solid 0.1vw;
-}
 input {
     width: 10vw;
     z-index: 5;
@@ -320,6 +312,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 96%;
+    overflow: hidden;
 }
 .settingSelect {
     width: 75%;
@@ -517,18 +510,6 @@ body {
 .materialContainer {
     width: 45vw;
 }
-.dopOptionsContainer {
-    width: 50vw;
-}
-.dopOptionButton {
-    margin-top: 0.3vw;
-    width: 50vw;
-    height: 2.7vw;
-    text-align: left;
-    border: black solid 0.1vw;
-    border-radius: 5vw;
-    background: #E9E6DA;
-}
 .promoCodeContainer {
     margin-left: 3vw;
 }
@@ -684,14 +665,12 @@ body {
     }
     .formatAndDruk {
         flex-direction: column;
+        overflow: hidden;
     }
     .materialAndDopContainer {
         flex-direction: column;
     }
     .materialContainer {
-        width: 100%;
-    }
-    .dopOptionsContainer {
         width: 100%;
     }
     .materialButtons {
