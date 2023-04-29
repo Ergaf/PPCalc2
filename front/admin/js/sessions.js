@@ -71,7 +71,7 @@ function renderSessionsItem(e){
 
 function del(target) {
     console.log(target.getAttribute("sesId"));
-    sendData("/getSessies", "DELETE", JSON.stringify(target.getAttribute("itemId"))).then(e => {
+    sendData("/admin/getSessies", "DELETE", JSON.stringify(target.getAttribute("itemId"))).then(e => {
         console.log(e);
         if(e.toString() === target.getAttribute("itemId").toString()){
             target.parentElement.parentElement.remove()

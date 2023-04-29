@@ -9,7 +9,7 @@ statistics.addEventListener("click", function () {
     tabl1.classList.add("d-none")
     statisticsContainer.classList.remove("d-none")
 
-    sendData("/getStatistics", "GET").then(e => {
+    sendData("/admin/getStatistics", "GET").then(e => {
         console.log(e);
         let start = `<svg width="1600" stroke="red" style="background-color: #87a865;" height="900">`
         let end = `</svg>`

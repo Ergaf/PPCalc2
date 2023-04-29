@@ -24,7 +24,7 @@ files.addEventListener('click', event => {
         to: `/`
     }
     pathString = ""
-    sendData("/adminfilesget", "POST", JSON.stringify(data)).then(e => {
+    sendData("/admin/adminfilesget", "POST", JSON.stringify(data)).then(e => {
             pathContainer.innerHTML = ""
             addPathUnit("./ files")
             pushFileUnit(e)
@@ -43,7 +43,7 @@ goHomePathButton.addEventListener("click", event => {
         to: `/`
     }
     pathString = ""
-    sendData("/adminfilesget", "POST", JSON.stringify(data)).then(e => {
+    sendData("/admin/adminfilesget", "POST", JSON.stringify(data)).then(e => {
         pathContainer.innerHTML = ""
         addPathUnit("__dirname ./ files")
         tbodyFileContainer.innerHTML = ""
@@ -59,7 +59,7 @@ function pickTrUnit(event, dataToServer) {
         this: pathValue,
         to: `${pathValue}/${dataToServer}`
     }
-    sendData("/adminfilesget", "POST", JSON.stringify(data)).then(e => {
+    sendData("/admin/adminfilesget", "POST", JSON.stringify(data)).then(e => {
         console.log(e);
         if(e.length > 0){
             if(e[0].isFileOpen){

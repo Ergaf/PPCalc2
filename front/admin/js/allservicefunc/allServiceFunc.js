@@ -4,7 +4,7 @@ function getData(){
         inPageCount: parseInt(countInPage.value)
     }
     if(nameService.innerText === "Усі замовлення"){
-        sendData("/getOrders", "POST", JSON.stringify(data)).then(res => {
+        sendData("/admin/getOrders", "POST", JSON.stringify(data)).then(res => {
             tableBody.innerHTML = ""
             console.log(res);
             if(res.status === "ok"){
@@ -15,7 +15,7 @@ function getData(){
             }
         })
     } else if (nameService.innerText === "Активні сессії"){
-        sendData("/getSessies", "POST", JSON.stringify(data)).then(res => {
+        sendData("/admin/getSessies", "POST", JSON.stringify(data)).then(res => {
             console.log(res);
             tableBody.innerHTML = ""
             if(res.status === "ok"){
@@ -26,7 +26,7 @@ function getData(){
             }
         })
     } else if (nameService.innerText === "Користувачі"){
-        sendData("/getUsers", "POST", JSON.stringify(data)).then(res => {
+        sendData("/admin/getUsers", "POST", JSON.stringify(data)).then(res => {
             console.log(res);
             tableBody.innerHTML = ""
             if(res.status === "ok"){

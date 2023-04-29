@@ -44,6 +44,9 @@ body {
     /*background: rgba(245, 245, 245, 0.96);*/
     background: #E9E6DA;
 }
+.gothamBook {
+    font-family: 'GothamBook', sans-serif;
+}
 .color {
     background: #E9E6DA;
 }

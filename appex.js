@@ -78,6 +78,7 @@ app.use("/test", express.static(__dirname + "/front/main2"));
 app.use("/createOrder", express.static(__dirname + "/front/createorder"));
 app.use("/login", express.static(__dirname + "/front/login"));
 app.use((req, res, next) => {
+    let url = req.url.split('/')[1]
     if (req.url === "/orders") {
         if (req.method === "GET") {
             testHaveSessionOnGet(req, res, next, []);
@@ -92,25 +93,33 @@ app.use((req, res, next) => {
         testHaveSession(req, res, next);
     } else if (req.url === "/parameterCalc" && req.method === "GET") {
         testAndAddSession(req, res, next);
-    } else if (req.url === "/getSessies") {
-        testHaveSession(req, res, next);
     } else if (req.url === "/getfiles") {
         testHaveSession(req, res, next);
-    } else if (req.url === "/admin" || req.url === "/admin/") {
-        testHaveSession(req, res, next);
+    } else if (url === "admin") {
+        testHaveSession(req, res, next, url);
     } else if (req.url === "/basket") {
         testHaveSession(req, res, next);
-    } else if (req.url === "/adminfilesget") {
-        testHaveSession(req, res, next);
-    } else if (req.url === "/getStatistics") {
-        testHaveSession(req, res, next);
-    } else if (req.url === "/createOrder") {
-        testHaveSession(req, res, next);
-    } else if (req.url === "/getOrders") {
-        testHaveSession(req, res, next);
-    } else if (req.url === "/getUsers") {
+    }
+    // else if (req.url === "/admin/adminfilesget") {
+    //     testHaveSession(req, res, next);
+    // } else if (req.url === "/admin/getStatistics") {
+    //     testHaveSession(req, res, next);
+    // }
+    else if (req.url === "/createOrder") {
         testHaveSession(req, res, next);
     }
+    // else if (req.url === "/admin/getOrders") {
+    //     testHaveSession(req, res, next);
+    // } else if (req.url === "/admin/getUsers") {
+    //     testHaveSession(req, res, next);
+    // }
+    // else if (req.url === "/admin/getSessies") {
+    //     testHaveSession(req, res, next);
+    // }
+    else if (req.url === "/isAdmin") {
+        testHaveSession(req, res, next);
+    }
+
     else {
         next();
     }
@@ -140,7 +149,7 @@ function testHaveSessionOnGet(req, res, next, getForNeed) {
     }
 }
 
-function testHaveSession(req, res, next) {
+function testHaveSession(req, res, next, url = "") {
     if (req.cookies.to) {
         let data = [req.cookies.to]
         let connection = mysql.createConnection(configSQLConnection);
@@ -156,7 +165,7 @@ function testHaveSession(req, res, next) {
                 req.sessionValue = req.cookies.to
                 next();
             } else {
-                if (req.url === "/admin" || req.url === "/admin/") {
+                if (req.url === "/admin" || req.url === "/isAdmin" || req.url === "/admin/#" || req.url === "/admin/") {
                     res.redirect("/login")
                 } else {
                     res.sendStatus(401);
@@ -165,7 +174,7 @@ function testHaveSession(req, res, next) {
         });
         connection.end();
     } else {
-        if (req.url === "/admin" || req.url === "/admin/") {
+        if (url === "admin" || req.url === "/isAdmin") {
             res.redirect("/login")
         } else {
             res.sendStatus(401);
@@ -322,6 +331,10 @@ app.get("/parameterCalc", function (req, res) {
 
 app.get("/files*", function (req, res) {
     let urll = req.url;
+    files.sendRes(urll, getContentType.getContentType(urll), res)
+});
+app.get("/admin/files*", function (req, res) {
+    let urll = req.url.substr(6);
     files.sendRes(urll, getContentType.getContentType(urll), res)
 });
 app.post("/orders", function (req, res) {
@@ -481,7 +494,7 @@ app.post("/login", function (req, res) {
     }
 })
 
-app.post("/adminfilesget", function (req, res) {
+app.post("/admin/adminfilesget", function (req, res) {
     console.log(req.userId);
     if (req.userId !== 1) {
         res.sendStatus(401)
@@ -515,7 +528,7 @@ app.get("/getprices", function (req, res) {
     res.send(prices)
 })
 
-app.get("/getStatistics", function (req, res) {
+app.get("/admin/getStatistics", function (req, res) {
     if (req.userId !== 1) {
         res.sendStatus(401)
     } else {
@@ -533,7 +546,7 @@ app.get("/getStatistics", function (req, res) {
     }
 })
 
-app.post("/getSessies", function (req, res) {
+app.post("/admin/getSessies", function (req, res) {
     if (req.userId !== 1) {
         res.sendStatus(401)
     } else {
@@ -554,7 +567,7 @@ app.post("/getSessies", function (req, res) {
     }
 })
 
-app.delete("/getSessies", function (req, res) {
+app.delete("/admin/getSessies", function (req, res) {
     if (req.userId !== 1) {
         res.sendStatus(401)
     } else {
@@ -693,7 +706,7 @@ app.post("/createOrder", function (req, res) {
     }
 })
 
-app.post("/getOrders", function (req, res) {
+app.post("/admin/getOrders", function (req, res) {
     if (req.userId !== 1) {
         res.sendStatus(401)
     } else {
@@ -718,7 +731,7 @@ app.post("/getOrders", function (req, res) {
     }
 })
 
-app.post("/getUsers", function (req, res) {
+app.post("/admin/getUsers", function (req, res) {
     if (req.userId !== 1) {
         res.sendStatus(401)
     } else {
@@ -740,6 +753,31 @@ app.post("/getUsers", function (req, res) {
                 error: err
             })
         }
+    }
+})
+
+app.get("/isAdmin", function (req, res) {
+    if (req.userId !== 1) {
+        res.redirect("/login")
+    } else {
+        res.redirect("/admin")
+    }
+})
+app.delete("/logout", function (req, res) {
+    try {
+        let connection = mysql.createConnection(configSQLConnection);
+        let data = [req.cookies.to]
+        let sql = "DELETE from sessions WHERE session = ?";
+        connection.query(sql, data, function (err, results, fields) {
+            res.send({
+                status: "ok"
+            })
+        })
+        connection.end()
+    } catch (err) {
+        res.send({
+            status: "ok"
+        })
     }
 })
 

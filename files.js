@@ -8,12 +8,12 @@ module.exports = {
             res.writeHead(404)
             res.write("file not found")
             res.end();
-            console.log("file not found " + file);
+            // console.log("file not found " + file);
         } else {
             res.writeHead(200, {"Content-Type": contentType})
             res.write(content)
             res.end();
-            console.log("sucess! " + file);
+            // console.log("sucess! " + file);
         }
     })},
     filesDelete: function filesDelete(y) {

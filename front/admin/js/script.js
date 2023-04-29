@@ -53,9 +53,17 @@ async function sendData(url, method, data) {
         // body: JSON.stringify(data) // body data type must match "Content-Type" header
         body: data // body data type must match "Content-Type" header
     });
-    let res = await response.json()
+    console.log(response);
+    if(response.status === 200){
+        let res = await response.json()
+        return await res;
+    } else if(response.status === 401){
+        location.href = '/login';
+    } else {
+        showError(response)
+    }
 
-    return await res; // parses JSON response into native JavaScript objects
+    // return await res; // parses JSON response into native JavaScript objects
 }
 
 let toast = new bootstrap.Toast($("#liveToast"))

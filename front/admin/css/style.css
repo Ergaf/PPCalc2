@@ -18,7 +18,7 @@
     -moz-user-select: none;      /* Firefox */
     -ms-user-select: none;       /* Internet Explorer/Edge */
     user-select: none;           /* Non-prefixed version, currently*/
-    font-family: 'GothamBold', sans-serif;
+    font-family: 'GothamBook', sans-serif;
 }
 body {
     /* set margin to 0 and overflow to hidden,
