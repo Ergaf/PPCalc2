@@ -1,5 +1,4 @@
 const mysql = require('mysql2/promise');
-const {databaseName} = require("../../appex");
 const {addStatistics} = require("../log/log");
 
 module.exports = {

@@ -14,13 +14,13 @@ sessions.addEventListener("click", function (){
     statisticsContainer.classList.add("d-none")
     tableBody.classList.remove("d-none")
     nameService.innerText = "Активні сессії"
-    tableTitle.innerHTML = `<th scope="col">ID</th>
-                            <th scope="col">sessonValue</th>
-                            <th scope="col">userAgent</th>
-                            <th scope="col">IP</th>
-                            <th scope="col">time</th>
-                            <th scope="col">userID</th>
-                            <th scope="col">del</th>`
+    tableTitle.innerHTML = `<th class="borderTablElem" scope="col"><div class="btn">ID</div></th>
+                            <th class="borderTablElem" scope="col"><div class="btn">sessonValue</div></th>
+                            <th class="borderTablElem" scope="col"><div class="btn">userAgent</div></th>
+                            <th class="borderTablElem" scope="col"><div class="btn">IP</div></th>
+                            <th class="borderTablElem" scope="col"><div class="btn">time</div></th>
+                            <th class="borderTablElem" scope="col"><div class="btn">userID</div></th>
+                            <th class="borderTablElem" scope="col"><div class="btn">del</div></th>`
     getData("Активні сессії")
 })
 function createTime(timeStr){
@@ -52,15 +52,15 @@ function add0ToTime(str){
 function renderSessionsItem(e){
     e.data.data.forEach(o => {
         let tr = document.createElement("tr");
-        tr.classList.add("trColumn");
-        tr.classList.add("color");
-        let innerHTML = `<td><div class="btn btn-sm">${o.id}</div></td>
-                            <td><div class="btn btn-sm">${o.session}</div></td>
-                            <td><div class="btn btn-sm">${o.userAgent}</div></td>
-                            <td><div class="btn btn-sm">${o.ip}</div></td>
-                            <td><div class="btn btn-sm">${createTime(o.time)}</div></td>
-                            <td><div class="btn btn-sm">${o.userid}</div></td>
-                            <td>
+        // tr.classList.add("trColumn");
+        // tr.classList.add("color");
+        let innerHTML = `<td class="borderTablElem"><div class="btn btn-sm">${o.id}</div></td>
+                            <td class="borderTablElem"><div class="btn btn-sm ">${o.session}</div></td>
+                            <td class="borderTablElem"><div class="btn btn-sm  userAgent">${o.userAgent}</div></td>
+                            <td class="borderTablElem"><div class="btn btn-sm ">${o.ip}</div></td>
+                            <td class="borderTablElem"><div class="btn btn-sm ">${createTime(o.time)}</div></td>
+                            <td class="borderTablElem"><div class="btn btn-sm ">${o.userid}</div></td>
+                            <td class="borderTablElem">
                                 <button class="btn btn-sm btn-danger" itemId="${o.id}" onclick=del(event.target)>close</button>
                             </td>         
                             `;

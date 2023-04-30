@@ -19,6 +19,7 @@
     -ms-user-select: none;       /* Internet Explorer/Edge */
     user-select: none;           /* Non-prefixed version, currently*/
     font-family: 'GothamBook', sans-serif;
+    margin: 0;
 }
 body {
     /* set margin to 0 and overflow to hidden,
@@ -26,7 +27,83 @@ body {
     margin: 0;
     /*overflow: hidden;*/
     /*background: rgba(245, 245, 245, 0.96);*/
+    /*background: #E9E6DA;*/
+    background: #ffffff;
+    font-size: 1vw;
+}
+header{
     background: #E9E6DA;
+}
+.color {
+    background: #E9E6DA;
+}
+.btn {
+    font-size: 1vw;
+    padding: 0.3vw;
+}
+.fontSize {
+    font-size: 1vw;
+    padding: 0.3vw;
+    height: auto;
+    width: auto;
+}
+.socIcon {
+    width: 2vw;
+}
+.myHeader {
+    width: 100vw;
+}
+.userAgent {
+    white-space: nowrap;
+    overflow:hidden;
+    max-width:60vw;
+    font-size: 0.7vw;
+    padding: 0.5vw;
+}
+.tablePrices {
+    width: 100%; /* Ширина таблицы */
+    border-collapse: collapse; /* Убираем двойные рамки */
+    overflow: hidden;
+    /*opacity: 0.8;*/
+    /*z-index: 2;*/
+}
+.tablePricesContainer {
+    /*background-color: #ffffff;*/
+}
+.borderTablElem {
+    border: #696969 solid 0.1vw;
+    background-color: #ffffff;
+    position: relative;
+    width: auto;
+    height: auto;
+    /*z-index: 3;*/
+}
+.borderTablElem:hover {
+    background: #cbcbcb;
+    /*border: #888888 solid 0.1vw;*/
+    /*z-index: 3;*/
+}
+.borderTablElem:hover::before {
+    content: ''; /* Добавляем псевдоколонку */
+    background: #858585; /* Цвет фона */
+    position: absolute; /* Абсолютное позиционирование */
+    height: 200vh; /* Высота колонки */
+    width: 100%; /* Ширина колонки */
+    left: 0; /* Положение от левого края */
+    top: -100vh; /* Положение от верхнего края */
+    z-index: -1; /* Располагаем ниже текста ячейки */
+    opacity: 0.2;
+}
+.borderTablElem:hover::after {
+    content: ''; /* Добавляем псевдоколонку */
+    background: #858585; /* Цвет фона */
+    position: absolute; /* Абсолютное позиционирование */
+    height: 100%; /* Высота колонки */
+    width: 200vw; /* Ширина колонки */
+    left: -100vw; /* Положение от левого края */
+    top: 0; /* Положение от верхнего края */
+    z-index: -1; /* Располагаем ниже текста ячейки */
+    opacity: 0.2;
 }
 .gray {
     background: #767676;

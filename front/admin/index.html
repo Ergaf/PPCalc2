@@ -58,7 +58,7 @@
 
 </svg>
 
-<header class="p-3 border-bottom">
+<header class="p-3 border-bottom myHeader">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
@@ -71,30 +71,31 @@
                 <li id="toCalc"><a href="/" class="nav-link px-2 text-dark">to calc</a></li>
                 <li id="files"><a href="#" class="nav-link px-2 text-dark">Усі файлы</a></li>
 <!--                <li id="users"><a href="#" class="nav-link px-2 text-dark">Користувачі</a></li>-->
-                <li id="prices"><a href="#" class="nav-link px-2 text-dark d-none">(тест таблиці)</a></li>
+                <li id="prices"><a href="#" class="nav-link px-2 text-dark">(тест таблиці)</a></li>
                 <li id="allOrders"><a href="#" class="nav-link px-2 text-dark">Усі замовлення</a></li>
 <!--                <li id="bd"><a href="#" class="nav-link px-2 text-dark">DataBase View Test</a></li>-->
                 <li id="sessions"><a href="#" class="nav-link px-2 text-dark">Сессії</a></li>
                 <li id="statistics"><a href="#" class="nav-link px-2 text-dark d-none">Статистика</a></li>
                 <li id="users"><a href="#" class="nav-link px-2 text-dark">Користувачі</a></li>
+                <li id="calcSettings"><a href="#" class="nav-link px-2 text-dark">Налаштування</a></li>
                 <li><a href="#" class="nav-link px-2 text-black-50 disabled">Конструктор</a></li>
             </ul>
 <!--            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">-->
 <!--                <input type="search" class="form-control text-bg-light" placeholder="Пошук" aria-label="Search">-->
 <!--            </form>-->
 
-            <div class="dropdown">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+            <div class="dropdown fontSize">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle fontSize" data-bs-toggle="dropdown"
                    aria-expanded="false">
-                    <img src="img/admIcon.png" alt="mdo" width="60" height="60" class="rounded-circle">
+                    <img src="img/admIcon.png" alt="mdo" class="rounded-circle">
                 </a>
-                <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#">Налаштування</a></li>
-                    <li><a class="dropdown-item" href="#">Користувач</a></li>
+                <ul class="dropdown-menu fontSize">
+                    <li><a class="dropdown-item fontSize" href="#">Налаштування</a></li>
+                    <li><a class="dropdown-item fontSize" href="#">Користувач</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" id="logout" href="#">Вийти</a></li>
+                    <li><a class="dropdown-item fontSize" id="logout" href="#">Вийти</a></li>
                 </ul>
             </div>
         </div>
@@ -109,7 +110,7 @@
 <!--        <div class="btn btn-secondary" id="functions">Магия</div>-->
 <!--    </main>-->
 
-<div class="filesContainer d-none" id="filesContainer">
+<div class="filesContainer color d-none" id="filesContainer">
     <div class="d-flex justify-content-center align-items-center">
         <nav aria-label="breadcrumb " class="d-flex btn">
             <ol class="breadcrumb" id="pathContainer"></ol>
@@ -131,10 +132,10 @@
     <div class="alert alert-danger d-none" role="alert" id="errorAlert"></div>
 </div>
 
-<div id="tabl1" class="d-none">
-    <table class="table table-sm">
-        <thead>
-            <tr id="pricesTableHeaderContainer"></tr>
+<div id="tabl1" class="table-responsive d-none">
+    <table class="table table-sm tablePrices">
+        <thead id="pricesTableHeaderContainer">
+
         </thead>
         <tbody id="pricesContainer"></tbody>
     </table>
@@ -150,12 +151,12 @@
 </div>
 
 <div class="listsContainer d-none" id="listsContainer">
-    <h2 id="nameService"></h2>
+    <h2 id="nameService" class="fontSize color"></h2>
 
-    <div class="d-flex align-content-center justify-content-center">
+    <div class="d-flex align-content-center m-0 color justify-content-center">
         <div class="input-group mb-3 w-auto">
-            <span class="input-group-text colorText" id="basic-addon1">Відображати за один раз:</span>
-            <select class="form-select-sm colorSelect cursorPointer" aria-label="Кількість" id="countInPage">
+            <span class="input-group-text colorText fontSize" id="basic-addon1">Відображати за один раз:</span>
+            <select class="form-select-sm colorSelect cursorPointer fontSize" aria-label="Кількість" id="countInPage">
                 <option class="cursorPointer" value="1">1</option>
                 <option class="cursorPointer" value="5">5</option>
                 <option class="cursorPointer" value="10">10</option>
@@ -170,14 +171,14 @@
         </div>
 
         <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center" id="paginationContainer">
+            <ul class="pagination justify-content-center fontSize" id="paginationContainer">
 
             </ul>
         </nav>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
+    <div class="table-responsive tablePricesContainer">
+        <table class="table tablePrices table-sm">
             <thead>
             <tr id="tableTitle">
 
@@ -188,8 +189,22 @@
     </div>
 </div>
 
-<div class="statisticsContainer" id="statisticsContainer">
+<div class="statisticsContainer d-none" id="statisticsContainer">
 
+</div>
+
+<div class="statisticsContainer d-none" id="settingsContainer">
+<!--    <div class="SettingsTitle">Settings</div>-->
+<!--    <div class="searchNav">-->
+<!--        <div class="btn btn-sm btn-light">clear</div>-->
+<!--        <input type="text" title="search...">-->
+<!--        <div class="btn btn-sm btn-light">search</div>-->
+<!--    </div>-->
+<!--    <div class="settingsView">-->
+<!--        <div class="addMaterial">-->
+
+<!--        </div>-->
+<!--    </div>-->
 </div>
 
 
@@ -225,17 +240,17 @@
             <p>&copy; 2023 Компанія ебейшая, Слава Україні!</p>
             <ul class="list-unstyled d-flex">
                 <li class="ms-3"><a class="link-dark" href="#">
-                    <svg class="bi" width="24" height="24">
+                    <svg class="bi socIcon">
                         <use xlink:href="#twitter"/>
                     </svg>
                 </a></li>
                 <li class="ms-3"><a class="link-dark" href="#">
-                    <svg class="bi" width="24" height="24">
+                    <svg class="bi socIcon">
                         <use xlink:href="#instagram"/>
                     </svg>
                 </a></li>
                 <li class="ms-3"><a class="link-dark" href="#">
-                    <svg class="bi" width="24" height="24">
+                    <svg class="bi socIcon">
                         <use xlink:href="#facebook"/>
                     </svg>
                 </a></li>
@@ -272,6 +287,7 @@
 <script src="js/allservicefunc/allServiceFunc.js"></script>
 <script src="js/users/users.js"></script>
 <script src="js/allservicefunc/logout.js"></script>
+<script src="js/settings/calcSettings.js"></script>
 
 <!--<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>-->
 

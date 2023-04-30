@@ -1,12 +1,11 @@
 const mysql = require('mysql2/promise');
-const {databaseName} = require("../appex");
 
 module.exports = {
     test: async function test() {
         const connection = await mysql.createConnection({
             host: "localhost",
             user: "root",
-            database: databaseName,
+            database: "databaseName",
             password: "1234"
         });
 

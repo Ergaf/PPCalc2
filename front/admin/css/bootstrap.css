@@ -8315,7 +8315,7 @@ textarea.form-control-lg {
 }
 
 .rounded-circle {
-  border-radius: 50% !important;
+  width: 4vw;
 }
 
 .rounded-pill {

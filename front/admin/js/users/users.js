@@ -1,17 +1,21 @@
 let users = document.querySelector("#users");
 
 users.addEventListener("click", function (e){
-    listsContainer.classList.remove("d-none");
     filesContainer.classList.add("d-none")
+    listsContainer.classList.remove("d-none")
+    tabl2.classList.add("d-none")
+    tabl1.classList.add("d-none")
+    statisticsContainer.classList.add("d-none")
+    tableBody.classList.remove("d-none")
     nameService.innerText = "Користувачі"
-    tableTitle.innerHTML = `<th scope="col">ID</th>
-                            <th scope="col">Ім'я</th>
-                            <th scope="col">@маіл</th>
-                            <th scope="col">Повноваження</th>
-                            <th scope="col">Телефон</th>
-                            <th scope="col">Мессенджер</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>`
+    tableTitle.innerHTML = `<th class="borderTablElem" scope="col">ID</th>
+                            <th class="borderTablElem" scope="col">Ім'я</th>
+                            <th class="borderTablElem" scope="col">@маіл</th>
+                            <th class="borderTablElem" scope="col">Повноваження</th>
+                            <th class="borderTablElem" scope="col">Телефон</th>
+                            <th class="borderTablElem" scope="col">Мессенджер</th>
+                            <th class="borderTablElem" scope="col"></th>
+                            <th class="borderTablElem" scope="col"></th>`
 
     getData("Користувачі")
 })
@@ -32,15 +36,15 @@ function showMore(target) {
 function renderUsersItem(res){
     res.data.data.forEach(o => {
         let tr = document.createElement("tr");
-        tr.classList.add("trColumn");
-        tr.classList.add("color");
-        let innerHTML = `<td><div class="btn">${o.id}</div></td>
-                            <td><div class="btn">${o.name}</div></td>
-                            <td><div class="btn">${o.mail}</div></td>
-                            <td><div class="btn">${o.role}</div></td>
-                            <td><div class="btn">${o.phone}</div></td>
-                            <td><div class="btn">${o.messenger}</div></td>
-                            <td>
+        // tr.classList.add("trColumn");
+        // tr.classList.add("color");
+        let innerHTML = `<td class="borderTablElem"><div class="btn">${o.id}</div></td>
+                            <td class="borderTablElem"><div class="btn">${o.name}</div></td>
+                            <td class="borderTablElem"><div class="btn">${o.mail}</div></td>
+                            <td class="borderTablElem"><div class="btn">${o.role}</div></td>
+                            <td class="borderTablElem"><div class="btn">${o.phone}</div></td>
+                            <td class="borderTablElem"><div class="btn">${o.messenger}</div></td>
+                            <td class="borderTablElem">
                                 <button class="btn btn-danger" itemId="${o.id}" onclick=showMore(event.target)>Докладніше</button>
                             </td>         
                             `;

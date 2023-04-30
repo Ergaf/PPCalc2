@@ -33,12 +33,19 @@ const {update} = require("./back/files/updateFile");
 const createOrderAwait = require("./back/order/createOrderAwait");
 const {getUsers} = require("./back/users/users");
 const {getOrdersAwait} = require("./back/order/getOrdersAwait");
+const {createDatabases} = require("./back/start/coldStart");
+const {adminCreateOrder} = require("./back/order/adminCreateOrder");
+const {updateOrder} = require("./back/order/updateOrder");
 
-const databaseName = "newcalc"
+const databases = {
+    main: "calc",
+    statist: "calcStatist",
+    materials: "calcMaterials",
+};
 const configSQLConnection = {
     host: "localhost",
     user: "root",
-    database: databaseName,
+    database: databases.main,
     password: "1234"
 }
 let connectNotBdConfig = {
@@ -527,6 +534,9 @@ app.post("/admin/adminfilesget", function (req, res) {
 app.get("/getprices", function (req, res) {
     res.send(prices)
 })
+app.get("/getpricesTabl", function (req, res) {
+    res.send(tableMain)
+})
 
 app.get("/admin/getStatistics", function (req, res) {
     if (req.userId !== 1) {
@@ -705,6 +715,25 @@ app.post("/createOrder", function (req, res) {
         })
     }
 })
+app.post("/admin/createOrder", function (req, res) {
+    let body = [];
+    try {
+        req.on('error', (err) => {
+            console.error(err);
+        }).on('data', (chunk) => {
+            body.push(chunk);
+        }).on('end', () => {
+            body = Buffer.concat(body).toString();
+            body = JSON.parse(body)
+            adminCreateOrder(req, res, body, configSQLConnection)
+        })
+    } catch (err) {
+        res.send({
+            status: "error",
+            error: err
+        })
+    }
+})
 
 app.post("/admin/getOrders", function (req, res) {
     if (req.userId !== 1) {
@@ -755,6 +784,25 @@ app.post("/admin/getUsers", function (req, res) {
         }
     }
 })
+app.put("/admin/createOrder", function (req, res) {
+    let body = [];
+    try {
+        req.on('error', (err) => {
+            console.error(err);
+        }).on('data', (chunk) => {
+            body.push(chunk);
+        }).on('end', () => {
+            body = Buffer.concat(body).toString();
+            body = JSON.parse(body)
+            updateOrder(req, res, body, configSQLConnection)
+        })
+    } catch (err) {
+        res.send({
+            status: "error",
+            error: err
+        })
+    }
+})
 
 app.get("/isAdmin", function (req, res) {
     if (req.userId !== 1) {
@@ -781,16 +829,18 @@ app.delete("/logout", function (req, res) {
     }
 })
 
+// createDatabases(connectNotBdConfig, databases)
+
 const connectionNotBd = mysql.createConnection(connectNotBdConfig);
-connectionNotBd.query("USE " + databaseName,
+connectionNotBd.query("USE " + databases.main,
     function (err, results) {
         if (err) {
-            console.log(`БД "${databaseName}" не найдено, пытаемся создать...`);
+            console.log(`БД "${databases.main}" не найдено, пытаемся создать...`);
             readPrices()
             createDatabase()
             startServer()
         } else {
-            console.log(`Подключено к БД "${databaseName}".`);
+            console.log(`Подключено к БД "${databases.main}".`);
             readPrices()
             startServer()
         }
@@ -799,12 +849,12 @@ connectionNotBd.end();
 
 function createDatabase() {
     const connectionNotBdCreate = mysql.createConnection(connectNotBdConfig);
-    connectionNotBdCreate.query("CREATE DATABASE " + databaseName,
+    connectionNotBdCreate.query("CREATE DATABASE " + databases.main,
         function (err, results) {
             if (err) {
                 console.log(err);
             } else {
-                console.log(`База данных "${databaseName}" успешно создана.`);
+                console.log(`База данных "${databases.main}" успешно создана.`);
                 createTableFiles();
             }
         });
